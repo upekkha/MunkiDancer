@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>autoremove</key>
+		<false/>
+		<key>catalogs</key>
+		<array>
+			<string>testing</string>
+		</array>
+		<key>description</key>
+		<string>Test description</string>
+		<key>display_name</key>
+		<string>Test display name</string>
+		<key>installer_item_hash</key>
+		<string>a27e15ee836b4bc90653aa427dfdde234c17a668c48c4ab9eefa704f0c384cf4</string>
+		<key>installer_item_location</key>
+		<string>Testapp-1.0.0.dmg</string>
+		<key>installer_item_size</key>
+		<integer>23170</integer>
+		<key>installer_type</key>
+		<string>copy_from_dmg</string>
+		<key>installs</key>
+		<array>
+			<dict>
+				<key>CFBundleIdentifier</key>
+				<string>com.testapp</string>
+				<key>CFBundleName</key>
+				<string>Testapp</string>
+				<key>CFBundleShortVersionString</key>
+				<string>1.0.0</string>
+				<key>minosversion</key>
+				<string>10.6.8</string>
+				<key>path</key>
+				<string>/Applications/Testapp.app</string>
+				<key>type</key>
+				<string>application</string>
+			</dict>
+		</array>
+		<key>items_to_copy</key>
+		<array>
+			<dict>
+				<key>destination_path</key>
+				<string>/Applications</string>
+				<key>source_item</key>
+				<string>Testapp.app</string>
+			</dict>
+		</array>
+		<key>minimum_os_version</key>
+		<string>10.6.0</string>
+		<key>name</key>
+		<string>TestApp</string>
+		<key>uninstall_method</key>
+		<string>remove_copied_items</string>
+		<key>uninstallable</key>
+		<true/>
+		<key>version</key>
+		<string>1.0.0</string>
+	</dict>
+    <dict>
+		<key>description</key>
+		<string>Another test description</string>
+		<key>display_name</key>
+		<string>Another test display name</string>
+		<key>name</key>
+		<string>SecondTestApp</string>
+		<key>version</key>
+		<string>2.0.0</string>
+	</dict>
+</array>
+</plist>
