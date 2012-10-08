@@ -1,0 +1,5 @@
+port:               5678
+log:                'warning'
+daemon:             1
+behind_proxy:       0
+auto_reload:        0
