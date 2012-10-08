@@ -1,0 +1,31 @@
+body {
+    cursor              : default;
+    margin-bottom       : 30px;
+}
+.center {
+    text-align          : center;
+    padding-right       : 0px;
+}
+
+th, td {
+    padding-left        : 10px;
+    padding-right       : 20px;
+    text-align          : left;
+}
+th {
+    background-color    : #CCCCCC;
+}
+table.tablesorter thead tr .tablesorter-header {
+    background-image    : url(../lib/bg.gif);
+    background-repeat   : no-repeat;
+    background-position : center right;
+    cursor              : pointer;
+}
+table.tablesorter thead tr .tablesorter-headerSortUp {
+    background-image    : url(../lib/asc.gif);
+    background-color    : #8dbdd8;
+}
+table.tablesorter thead tr .tablesorter-headerSortDown {
+    background-image    : url(../lib/desc.gif);
+    background-color    : #8dbdd8;
+}

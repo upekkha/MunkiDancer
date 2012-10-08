@@ -9,6 +9,7 @@ use Dancer::Test;
 my @defined_routes = (
     '/',
     '/catalog/testcatalog',
+    '/lib/style.css',
 );
 foreach my $url (@defined_routes) {
     route_exists        [GET => $url],                  "$url: route handler is defined";
