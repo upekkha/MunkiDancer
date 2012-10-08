@@ -8,6 +8,8 @@ get '/' => sub {
 
 get '/catalog/:name' => sub {
     ParseCatalog(param('name'));
+
+    return %catalog;
 };
 
 1;
