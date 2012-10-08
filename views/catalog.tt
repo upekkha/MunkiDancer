@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>D-Phys Automated Software Installation</title>
+    </head>
+    <body>
+        <h2>Catalog</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>name</th><th>display_name</th><th>description</th><th>version</th>
+                </tr>
+            </thead>
+          <% FOREACH app IN catalog.keys.sort %>
+            <tr>
+                <td><% catalog.$app.name %></td>
+                <td><% catalog.$app.display_name %></td>
+                <td><% catalog.$app.description %></td>
+                <td><% catalog.$app.version %></td>
+            </tr>
+          <% END %>
+        </table>
+    </body>
+</html>

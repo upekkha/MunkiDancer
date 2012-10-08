@@ -9,7 +9,9 @@ get '/' => sub {
 get '/catalog/:name' => sub {
     ParseCatalog(param('name'));
 
-    return %catalog;
+    template 'catalog' => {
+        catalog => \%catalog,
+    };
 };
 
 1;
