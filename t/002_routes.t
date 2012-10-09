@@ -17,6 +17,15 @@ foreach my $url (@defined_routes) {
     response_status_is  [GET => $url],          200,    "$url: response status is 200";
 }
 
+my @defined_error_routes = (
+    '/catalog/testnotthere',
+    '/catalog/testnotthere/raw',
+);
+foreach my $url (@defined_error_routes) {
+    route_exists        [GET => $url],                  "$url: route handler is defined";
+    response_status_is  [GET => $url],          404,    "$url: response status is 404";
+}
+
 my @undefined_routes = (
     '.',
 );
