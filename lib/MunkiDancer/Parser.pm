@@ -1,5 +1,6 @@
 package MunkiDancer::Parser;
 use Dancer ':syntax';
+use MunkiDancer::Common;
 use Mac::PropertyList qw( parse_plist_file );
 use Exporter 'import';
 our @EXPORT = qw(
@@ -11,8 +12,12 @@ our %catalog;   # hash with catalog entries
 sub ParseCatalog {
     my ($name) = @_;
 
+    my $catalogfile = RepoPath($name) . "/catalogs/$name";
+    Error404("Catalog not found") if ( ! -e $catalogfile);
+    my $plist = parse_plist_file($catalogfile)
+        or Error404("Catalog could not be parsed");
+
     %catalog = ();  # empty hash
-    my $plist = parse_plist_file("./t/testrepo/catalogs/testcatalog");
 
     # loop over applications in catalog
     foreach my $app (@{$plist->as_perl}) {
