@@ -10,6 +10,8 @@ my @defined_routes = (
     '/',
     '/catalog/testcatalog',
     '/catalog/testcatalog/raw',
+    '/host/testhost',
+    '/host/testhost/raw',
     '/lib/style.css',
 );
 foreach my $url (@defined_routes) {
@@ -20,6 +22,8 @@ foreach my $url (@defined_routes) {
 my @defined_error_routes = (
     '/catalog/testnotthere',
     '/catalog/testnotthere/raw',
+    '/host/testnotthere',
+    '/host/testnotthere/raw',
 );
 foreach my $url (@defined_error_routes) {
     route_exists        [GET => $url],                  "$url: route handler is defined";

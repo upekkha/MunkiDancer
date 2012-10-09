@@ -26,4 +26,19 @@ get '/catalog/:name/raw' => sub {
     return \%catalog;
 };
 
+get '/host/:name' => sub {
+    ParseHost(param('name'));
+
+    template 'host' => {
+        host => \%host,
+    };
+};
+
+get '/host/:name/raw' => sub {
+    ParseHost(param('name'));
+    set serializer => 'JSON';
+
+    return \%host;
+};
+
 1;

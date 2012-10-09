@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>D-Phys Automated Software Installation</title>
+        <link rel="stylesheet" href="../lib/style.css">
+        <script type="text/javascript" src="../lib/jquery-1.7.2.min.js"></script>
+        <script type="text/javascript" src="../lib/jquery.tablesorter.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $("#sortedTable").tablesorter();
+            });
+        </script>
+    </head>
+    <body>
+        <h2>Host <% host.name %></h2>
+          <% FOREACH key IN host.keys.sort %>
+            <% key %>:
+              <% FOREACH element IN host.$key %>
+                <% element %>
+              <% END %>
+            </br>
+          <% END %>
+    </body>
+</html>
