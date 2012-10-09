@@ -9,6 +9,7 @@ use Dancer::Test;
 my @defined_routes = (
     '/',
     '/catalog/testcatalog',
+    '/catalog/testcatalog/raw',
     '/lib/style.css',
 );
 foreach my $url (@defined_routes) {

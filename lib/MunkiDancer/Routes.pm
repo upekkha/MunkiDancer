@@ -19,4 +19,10 @@ get '/catalog/:name' => sub {
     };
 };
 
+get '/catalog/:name/raw' => sub {
+    ParseCatalog(param('name'));
+
+    return \%catalog;
+};
+
 1;
