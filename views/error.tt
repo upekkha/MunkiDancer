@@ -1,0 +1,9 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>MunkiDancer Error</title>
+    </head>
+    <body>
+        <h2>Error: <% title %></h2>
+    </body>
+</html>
