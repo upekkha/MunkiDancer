@@ -21,6 +21,7 @@ get '/catalog/:name' => sub {
 
 get '/catalog/:name/raw' => sub {
     ParseCatalog(param('name'));
+    set serializer => 'JSON';
 
     return \%catalog;
 };
