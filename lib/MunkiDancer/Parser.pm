@@ -26,10 +26,10 @@ sub ParseCatalog {
     foreach my $app (@{$plist->as_perl}) {
         # store information in hash
         $catalog{$app->{name}} = {
-            "name"         => $app->{name},
-            "display_name" => $app->{display_name} || $app->{name},
-            "description"  => $app->{description},
-            "version"      => $app->{version},
+            "id"          => $app->{name},
+            "name"        => $app->{display_name} || $app->{name},
+            "description" => $app->{description},
+            "version"     => $app->{version},
         };
     }
 
