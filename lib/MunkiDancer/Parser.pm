@@ -33,6 +33,30 @@ sub ParseCatalog {
         };
     }
 
+    # fetch additional app info
+    FetchAppInfo($name);
+
+    return 1;
+}
+
+sub FetchAppInfo {
+    my ($name) = @_;
+
+    my $infofile = RepoPath($name) . "/web/appurls.dat";
+    Error404("AppInfo file not found") if ( ! -e $infofile);
+
+    open(INFO, '<', $infofile)
+        or Error404("AppInfo file could not be opened");
+    foreach my $line (<INFO>) {
+        chomp($line);
+        next if $line=~ m/^#/;                          # skip comments starting with #
+        my ($id, $url, $lic) = split ('\*', "$line");   # retrieve app id, url and license separated by *
+        if (exists $catalog{$id}) {                     # add info if entry for this app exists
+            $catalog{$id}{producturl} = $url || '';
+            $catalog{$id}{license}    = $lic || 'free';
+        }
+    }
+
     return 1;
 }
 
