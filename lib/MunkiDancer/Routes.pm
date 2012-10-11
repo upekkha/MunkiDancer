@@ -21,8 +21,14 @@ get '/catalog/:name' => sub {
 };
 
 get '/catalog/:name/exists' => sub {
-    return 0 unless Catalog(param('name'));
-    return 1;
+    my $exists = '0';
+    $exists = '1' if Catalog(param('name'));
+    my %state = (
+        exists => $exists,
+    );
+
+    set serializer => 'JSON';
+    return \%state;
 };
 
 get '/catalog/:name/raw' => sub {
@@ -41,8 +47,14 @@ get '/host/:name' => sub {
 };
 
 get '/host/:name/exists' => sub {
-    return 0 unless Manifest(param('name'));
-    return 1;
+    my $exists = '0';
+    $exists = '1' if Manifest(param('name'));
+    my %state = (
+        exists => $exists,
+    );
+
+    set serializer => 'JSON';
+    return \%state;
 };
 
 
