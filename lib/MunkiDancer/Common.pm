@@ -5,6 +5,7 @@ our @EXPORT = qw(
     Catalog
     Manifest
     AppInfo
+    AppExcluded
     Error404
 );
 
@@ -42,6 +43,20 @@ sub AppInfo {
     return 0 unless (-e $file);
 
     return $file;
+}
+
+sub AppExcluded {
+    my ($app) = @_;
+
+    my $excluded_names = 'LicISG|Kosten|Dphys|unlicensed|Driver';
+    $excluded_names   .= '|AdobeAcrobat9$|ISGmacports|ManagedClient';
+
+    if( exists $app->{name} ) {
+        return 1 if $app->{name} =~ m/$excluded_names/i;
+    }
+    if( exists $app->{installer_item_location} ) {
+        return 1 if $app->{installer_item_location} =~ m/Driver/;
+    }
 }
 
 sub Error404 {

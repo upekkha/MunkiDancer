@@ -24,6 +24,7 @@ sub ParseCatalog {
 
     # loop over applications in catalog
     foreach my $app (@{$plist->as_perl}) {
+        next if AppExcluded($app);
         # store information in hash
         $catalog{$app->{name}} = {
             "id"          => $app->{name},
