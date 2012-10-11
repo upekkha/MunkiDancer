@@ -15,8 +15,8 @@ our %host;      # hash with host information
 sub ParseCatalog {
     my ($name) = @_;
 
-    my $catalogfile = RepoPath($name) . "/catalogs/$name";
-    Error404("Catalog not found") if ( ! -e $catalogfile);
+    my $catalogfile = Catalog($name);
+    Error404("Catalog not found") if ( !$catalogfile);
     my $plist = parse_plist_file($catalogfile)
         or Error404("Catalog could not be parsed");
 
@@ -42,8 +42,8 @@ sub ParseCatalog {
 sub FetchAppInfo {
     my ($name) = @_;
 
-    my $infofile = RepoPath($name) . "/web/appurls.dat";
-    Error404("AppInfo file not found") if ( ! -e $infofile);
+    my $infofile = AppInfo($name);
+    Error404("AppInfo file not found") if ( !$infofile);
 
     open(INFO, '<', $infofile)
         or Error404("AppInfo file could not be opened");
@@ -63,8 +63,8 @@ sub FetchAppInfo {
 sub ParseHost {
     my ($name) = @_;
 
-    my $manifestfile = RepoPath($name) . "/manifests/$name";
-    Error404("Host not found") if ( ! -e $manifestfile);
+    my $manifestfile = Manifest($name);
+    Error404("Host not found") if ( !$manifestfile);
     my $plist = parse_plist_file($manifestfile)
         or Error404("Host could not be parsed");
 
