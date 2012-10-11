@@ -10,7 +10,11 @@ my @defined_routes = (
     '/',
     '/catalog/testcatalog',
     '/catalog/testcatalog/raw',
+    '/catalog/testcatalog/exists',
+    '/catalog/testnotthere/exists',
     '/host/testhost',
+    '/host/testhost/exists',
+    '/host/testnotthere/exists',
     '/host/testhost/raw',
     '/lib/style.css',
 );
