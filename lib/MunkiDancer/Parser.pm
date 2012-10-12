@@ -22,16 +22,33 @@ sub ParseCatalog {
 
     %catalog = ();  # empty hash
 
-    # loop over applications in catalog
+    # store information of apps that are not updates
     foreach my $app (@{$plist->as_perl}) {
+        next if $app->{update_for};
         next if AppExcluded($app);
-        # store information in hash
+
         $catalog{$app->{name}} = {
             "id"          => $app->{name},
             "name"        => $app->{display_name} || $app->{name},
             "description" => $app->{description},
             "version"     => $app->{version},
         };
+    }
+
+    # updates increment version of corresponding app
+    foreach my $app (@{$plist->as_perl}) {
+        next unless $app->{update_for};
+
+        foreach my $upd_for ( @{$app->{update_for}} ) {
+            next if UpdateExcluded($app, $upd_for);
+            next unless $catalog{$upd_for};
+
+            (my $upd_vers = $app->{version}) =~ s/\.//g;
+            (my $ori_vers = $catalog{$upd_for}{version}) =~ s/\.//g ;
+            if( $upd_vers > $ori_vers ) {
+                $catalog{$upd_for}{version} = $app->{version};
+            }
+        }
     }
 
     # fetch additional app info

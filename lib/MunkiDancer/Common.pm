@@ -6,6 +6,7 @@ our @EXPORT = qw(
     Manifest
     AppInfo
     AppExcluded
+    UpdateExcluded
     Error404
 );
 
@@ -57,6 +58,15 @@ sub AppExcluded {
     if( exists $app->{installer_item_location} ) {
         return 1 if $app->{installer_item_location} =~ m/Driver/;
     }
+}
+
+sub UpdateExcluded {
+    my ($app, $upd_for) = @_;
+
+    if( exists $app->{name} ) {
+        return 1 if $app->{name} =~ m/MSRemoteDesktop/i;
+    }
+    return 1 if $upd_for =~ m/AcrobatPro9/i;
 }
 
 sub Error404 {
