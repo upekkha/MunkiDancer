@@ -2,6 +2,7 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <array>
+    <!--Full entry-->
 	<dict>
 		<key>autoremove</key>
 		<false/>
@@ -58,6 +59,46 @@
 		<key>version</key>
 		<string>1.0.0</string>
 	</dict>
+    <!--Update for app above-->
+    <dict>
+		<key>display_name</key>
+		<string>SecondTestApp Update Above</string>
+		<key>name</key>
+		<string>SecondTestAppUpdAbove</string>
+		<key>version</key>
+		<string>1.1.0</string>
+		<key>update_for</key>
+		<array>
+			<string>TestApp</string>
+		</array>
+	</dict>
+    <!--Update for app above with lower version number-->
+    <dict>
+		<key>display_name</key>
+		<string>SecondTestApp Update Above lower version</string>
+		<key>name</key>
+		<string>SecondTestAppUpdAboveLowerVers</string>
+		<key>version</key>
+		<string>1.0.5</string>
+		<key>update_for</key>
+		<array>
+			<string>TestApp</string>
+		</array>
+	</dict>
+    <!--Update for app below-->
+    <dict>
+		<key>display_name</key>
+		<string>SecondTestApp Update Below</string>
+		<key>name</key>
+		<string>SecondTestAppUpdBelow</string>
+		<key>version</key>
+		<string>2.1.0</string>
+		<key>update_for</key>
+		<array>
+			<string>SecondTestApp</string>
+		</array>
+	</dict>
+    <!--Short entry with update-->
     <dict>
 		<key>description</key>
 		<string>Another test description</string>
@@ -67,6 +108,45 @@
 		<string>SecondTestApp</string>
 		<key>version</key>
 		<string>2.0.0</string>
+	</dict>
+    <!--Update without corresponding app-->
+    <dict>
+		<key>display_name</key>
+		<string>Update without app</string>
+		<key>name</key>
+		<string>AppNotThereUpd</string>
+		<key>version</key>
+		<string>3.0.0</string>
+		<key>update_for</key>
+		<array>
+			<string>AppNotThere</string>
+		</array>
+	</dict>
+    <!--Excluded app-->
+    <dict>
+		<key>description</key>
+		<string>This app should not show up</string>
+		<key>display_name</key>
+		<string>ExcludedApp</string>
+		<key>name</key>
+		<string>TestAppunlicensed</string>
+		<key>version</key>
+		<string>0.1</string>
+	</dict>
+    <!--Excluded update-->
+    <dict>
+		<key>description</key>
+		<string>This update should not show up</string>
+		<key>display_name</key>
+		<string>ExcludedUpdate</string>
+		<key>name</key>
+		<string>MSRemoteDesktop</string>
+		<key>version</key>
+		<string>22.0.0</string>
+		<key>update_for</key>
+		<array>
+			<string>SecondTestApp</string>
+		</array>
 	</dict>
 </array>
 </plist>
