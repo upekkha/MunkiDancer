@@ -14,7 +14,7 @@ sub RepoPath {
     my ($file) = @_;
 
     my $RepoPath = './repo';    # local symlink to repository
-    $RepoPath = './t/testrepo' if ($file =~ /^test/ && $file ne 'testing');
+    $RepoPath = './t/testrepo' if ($file =~ /test/ && $file ne 'testing');
 
     return $RepoPath;
 }

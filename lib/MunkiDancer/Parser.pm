@@ -81,16 +81,38 @@ sub FetchAppInfo {
 sub ParseHost {
     my ($name) = @_;
 
+    %host = ();  # empty hash
+    $host{name} = $name;
+
     my $manifestfile = Manifest($name);
     Error404("Host not found") if ( !$manifestfile);
     my $plist = parse_plist_file($manifestfile)
         or Error404("Host could not be parsed");
 
-    %host = ();  # empty hash
-    $host{name} = $name;
-
     # loop over relevant entries
     foreach my $key qw( catalogs managed_installs included_manifests ) {
+        foreach my $entry (@{ ${$plist->as_perl}{$key} }) {
+            push(@{ $host{$key} }, $entry);     # push to hash of arrays
+        }
+    }
+
+    # parse included bundles
+    foreach my $bundle (@{ $host{included_manifests} }) {
+        ParseBundle($bundle);
+    }
+
+    return 1;
+}
+
+sub ParseBundle {
+    my ($name) = @_;
+
+    my $bundlefile = Manifest("$name");
+    Error404("Bundle $name not found") if ( !$bundlefile);
+    my $plist = parse_plist_file($bundlefile)
+        or Error404("Bundle $name could not be parsed");
+
+    foreach my $key qw( managed_installs ) {
         foreach my $entry (@{ ${$plist->as_perl}{$key} }) {
             push(@{ $host{$key} }, $entry);     # push to hash of arrays
         }
