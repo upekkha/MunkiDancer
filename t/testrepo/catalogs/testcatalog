@@ -163,5 +163,38 @@
 			<string>SecondTestApp</string>
 		</array>
 	</dict>
+    <!--Multiple entries: first-->
+    <dict>
+		<key>description</key>
+		<string>First description is ignored</string>
+		<key>display_name</key>
+		<string>Multiple entries</string>
+		<key>name</key>
+		<string>MultipleEntryApp</string>
+		<key>version</key>
+		<string>0.11</string>
+	</dict>
+    <!--Multiple entries: highest version is kept-->
+    <dict>
+		<key>description</key>
+		<string>Last description is shown</string>
+		<key>display_name</key>
+		<string>Multiple entries</string>
+		<key>name</key>
+		<string>MultipleEntryApp</string>
+		<key>version</key>
+		<string>0.13</string>
+	</dict>
+    <!--Multiple entries: middle is ignored-->
+    <dict>
+		<key>description</key>
+		<string>Middle description is ignored</string>
+		<key>display_name</key>
+		<string>Multiple entries</string>
+		<key>name</key>
+		<string>MultipleEntryApp</string>
+		<key>version</key>
+		<string>0.12</string>
+	</dict>
 </array>
 </plist>

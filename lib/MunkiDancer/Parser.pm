@@ -27,6 +27,13 @@ sub ParseCatalog {
         next if ($app->{update_for} && !UpdateShownInCatalog($app));
         next if AppExcluded($app);
 
+        # skip if an entry with higher version exists
+        if( exists $catalog{$app->{name}} ) {
+            (my $upd_vers = $app->{version}) =~ s/\.//g;
+            (my $ori_vers = $catalog{$app->{name}}{version}) =~ s/\.//g ;
+            next if( $upd_vers <= $ori_vers );
+        }
+
         $catalog{$app->{name}} = {
             "id"          => $app->{name},
             "name"        => $app->{display_name} || $app->{name},
