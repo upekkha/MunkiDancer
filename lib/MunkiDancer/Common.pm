@@ -49,14 +49,13 @@ sub AppInfo {
 sub AppExcluded {
     my ($app) = @_;
 
-    my $excluded_names = 'LicISG|Kosten|Dphys|unlicensed|Driver';
-    $excluded_names   .= '|AdobeAcrobat9$|ISGmacports|ManagedClient';
+    my $excluded_names = 'LicISG|Dphys|unlicensed|ISGmacports|ManagedClient';
 
     if( exists $app->{name} ) {
         return 1 if $app->{name} =~ m/$excluded_names/i;
     }
     if( exists $app->{installer_item_location} ) {
-        return 1 if $app->{installer_item_location} =~ m/Driver/;
+        return 1 if $app->{installer_item_location} =~ m/Driver|Kostenstelle/;
     }
 }
 
@@ -66,7 +65,6 @@ sub UpdateExcluded {
     if( exists $app->{name} ) {
         return 1 if $app->{name} =~ m/MSRemoteDesktop/i;
     }
-    return 1 if $upd_for =~ m/AcrobatPro9/i;
 }
 
 sub Error404 {
