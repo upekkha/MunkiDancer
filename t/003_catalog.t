@@ -19,6 +19,7 @@ $url = '/catalog/testcatalog';
     response_content_unlike  [GET => $url],     qr|<td>AppNotThereUpd|,                                         "$url: Update without app is ignored";
     response_content_unlike  [GET => $url],     qr|<td>ExcludedApp|,                                            "$url: Excluded App is not listed";
     response_content_unlike  [GET => $url],     qr|<td>ExcludedUpdate|,                                         "$url: Excluded Update is not listed";
+    response_content_like    [GET => $url],     qr|<td>This is an app and update</td>|,                         "$url: Excluded Update included as app is listed";
     response_content_unlike  [GET => $url],     qr|>1\.0\.5</td>|,                                              "$url: Update with lower version is ignored";
     response_content_like    [GET => $url],     qr|>1\.1\.0</td>|,                                              "$url: Update increments version (above)";
     response_content_like    [GET => $url],     qr|>2\.1\.0</td>|,                                              "$url: Update increments version (below)";

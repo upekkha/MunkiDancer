@@ -24,7 +24,7 @@ sub ParseCatalog {
 
     # store information of apps that are not updates
     foreach my $app (@{$plist->as_perl}) {
-        next if $app->{update_for};
+        next if ($app->{update_for} && !UpdateShownInCatalog($app));
         next if AppExcluded($app);
 
         $catalog{$app->{name}} = {

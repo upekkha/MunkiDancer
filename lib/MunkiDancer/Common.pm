@@ -7,6 +7,7 @@ our @EXPORT = qw(
     AppInfo
     AppExcluded
     UpdateExcluded
+    UpdateShownInCatalog
     Error404
 );
 
@@ -61,6 +62,14 @@ sub AppExcluded {
 
 sub UpdateExcluded {
     my ($app, $upd_for) = @_;
+
+    if( exists $app->{name} ) {
+        return 1 if $app->{name} =~ m/MSRemoteDesktop|ExcludedUpdate/i;
+    }
+}
+
+sub UpdateShownInCatalog {
+    my ($app) = @_;
 
     if( exists $app->{name} ) {
         return 1 if $app->{name} =~ m/MSRemoteDesktop/i;

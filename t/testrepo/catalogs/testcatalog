@@ -140,9 +140,24 @@
 		<key>display_name</key>
 		<string>ExcludedUpdate</string>
 		<key>name</key>
+		<string>ExcludedUpdate</string>
+		<key>version</key>
+		<string>4.0</string>
+		<key>update_for</key>
+		<array>
+			<string>SecondTestApp</string>
+		</array>
+	</dict>
+    <!--Excluded as update, but listed as app-->
+    <dict>
+		<key>description</key>
+		<string>This is an app and update</string>
+		<key>display_name</key>
+		<string>MS Remote Desktop</string>
+		<key>name</key>
 		<string>MSRemoteDesktop</string>
 		<key>version</key>
-		<string>22.0.0</string>
+		<string>5.0</string>
 		<key>update_for</key>
 		<array>
 			<string>SecondTestApp</string>
