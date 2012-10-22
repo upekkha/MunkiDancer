@@ -13,12 +13,27 @@
     </head>
     <body>
         <h2>Host <% host.name %></h2>
-          <% FOREACH key IN host.keys.sort %>
-            <% key %>:
-              <% FOREACH element IN host.$key %>
-                <% element %>
-              <% END %>
-            </br>
+        Catalogs:
+          <% FOREACH element IN host.catalogs %>
+            <% element %>
           <% END %>
+        </br>
+        Included Manifests:
+          <% FOREACH element IN host.included_manifests %>
+            <% element %>
+          <% END %>
+        </br></br>
+        <table id="sortedTable" class="tablesorter">
+            <thead>
+                <tr>
+                    <th>Managed Installs</th>
+                </tr>
+            </thead>
+          <% FOREACH app IN host.managed_installs.sort %>
+            <tr>
+                <td><% app %></td>
+            </tr>
+          <% END %>
+        </table>
     </body>
 </html>

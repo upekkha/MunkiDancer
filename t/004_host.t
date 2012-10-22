@@ -10,9 +10,9 @@ my $url;
 # ensure correct parsing of host manifest
 $url = '/host/testhost';
     response_content_like    [GET => $url],     qr|<h2>Host testhost</h2>|,                                     "$url: Host name is listed";
-    response_content_like    [GET => $url],     qr|catalogs:\s*testcatalog\s*</br>|,                            "$url: Catalog is listed";
-    response_content_like    [GET => $url],     qr|included_manifests:\s*bundles/testbundle\s*</br>|,           "$url: Bundle is listed";
-    response_content_like    [GET => $url],     qr|managed_installs:|,                                          "$url: Managed installs are listed";
+    response_content_like    [GET => $url],     qr|Catalogs:\s*testcatalog\s*</br>|,                            "$url: Catalog is listed";
+    response_content_like    [GET => $url],     qr|Included Manifests:\s*bundles/testbundle\s*</br>|,           "$url: Bundle is listed";
+    response_content_like    [GET => $url],     qr|Managed Installs|,                                           "$url: Managed installs are listed";
     response_content_like    [GET => $url],     qr|TestApp|,                                                    "$url: App from bundle is listed";
     response_content_like    [GET => $url],     qr|SecondTestApp|,                                              "$url: App from manifest is listed";
 
