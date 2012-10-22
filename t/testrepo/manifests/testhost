@@ -13,6 +13,7 @@
     <key>managed_installs</key>
     <array>
         <string>SecondTestApp</string>
+        <string>ExcludedApp</string>
     </array>
 </dict>
 </plist>

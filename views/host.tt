@@ -22,16 +22,22 @@
           <% FOREACH element IN host.included_manifests %>
             <% element %>
           <% END %>
-        </br></br>
+        </br>
+        Managed Installs:
+        </br>
         <table id="sortedTable" class="tablesorter">
             <thead>
                 <tr>
-                    <th>Managed Installs</th>
+                    <th>id</th><th>name</th><th>description</th><th>license</th><th>version</th>
                 </tr>
             </thead>
-          <% FOREACH app IN host.managed_installs.sort %>
+          <% FOREACH app IN host.managed_installs.keys.sort %>
             <tr>
-                <td><% app %></td>
+                <td><% host.managed_installs.$app.id %></td>
+                <td><a href="<% host.managed_installs.$app.producturl %>"><% host.managed_installs.$app.name %></a></td>
+                <td><% host.managed_installs.$app.description %></td>
+                <td><% host.managed_installs.$app.license %></td>
+                <td class="center"><% host.managed_installs.$app.version %></td>
             </tr>
           <% END %>
         </table>

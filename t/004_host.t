@@ -13,8 +13,14 @@ $url = '/host/testhost';
     response_content_like    [GET => $url],     qr|Catalogs:\s*testcatalog\s*</br>|,                            "$url: Catalog is listed";
     response_content_like    [GET => $url],     qr|Included Manifests:\s*bundles/testbundle\s*</br>|,           "$url: Bundle is listed";
     response_content_like    [GET => $url],     qr|Managed Installs|,                                           "$url: Managed installs are listed";
-    response_content_like    [GET => $url],     qr|TestApp|,                                                    "$url: App from bundle is listed";
-    response_content_like    [GET => $url],     qr|SecondTestApp|,                                              "$url: App from manifest is listed";
+    response_content_like    [GET => $url],     qr|<td>TestApp|,                                                "$url: App from bundle is listed";
+    response_content_like    [GET => $url],     qr|<td>SecondTestApp|,                                          "$url: App from manifest is listed";
+    response_content_unlike  [GET => $url],     qr|<td>ExcludedApp|,                                            "$url: Excluded App is not listed";
+    response_content_like    [GET => $url],     qr|<td>Test description</td>|,                                  "$url: Description is listed";
+    response_content_like    [GET => $url],     qr|>Test display name<|,                                        "$url: Display name is listed";
+    response_content_like    [GET => $url],     qr|href="http://TestApp\.example\.com"|,                        "$url: Product url is listed";
+    response_content_like    [GET => $url],     qr|<td>ides</td>|,                                              "$url: License ides is listed";
+    response_content_like    [GET => $url],     qr|<td>free</td>|,                                              "$url: License free is listed";
 
 # route to poll if host exists
 $url = '/host/testhost/exists';
