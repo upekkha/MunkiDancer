@@ -12,14 +12,14 @@
         </script>
     </head>
     <body>
-        <h2>Host <% host.name %></h2>
+        <h2>Host <% manifest.name %></h2>
         Catalogs:
-          <% FOREACH element IN host.catalogs %>
+          <% FOREACH element IN manifest.catalogs %>
             <% element %>
           <% END %>
         </br>
         Included Manifests:
-          <% FOREACH element IN host.included_manifests %>
+          <% FOREACH element IN manifest.included_manifests %>
             <% element %>
           <% END %>
         </br>
@@ -31,13 +31,13 @@
                     <th>id</th><th>name</th><th>description</th><th>license</th><th>version</th>
                 </tr>
             </thead>
-          <% FOREACH app IN host.managed_installs.keys.sort %>
+          <% FOREACH app IN host.keys.sort %>
             <tr>
-                <td><% host.managed_installs.$app.id %></td>
-                <td><a href="<% host.managed_installs.$app.producturl %>"><% host.managed_installs.$app.name %></a></td>
-                <td><% host.managed_installs.$app.description %></td>
-                <td><% host.managed_installs.$app.license %></td>
-                <td class="center"><% host.managed_installs.$app.version %></td>
+                <td><% host.$app.id %></td>
+                <td><a href="<% host.$app.producturl %>"><% host.$app.name %></a></td>
+                <td><% host.$app.description %></td>
+                <td><% host.$app.license %></td>
+                <td class="center"><% host.$app.version %></td>
             </tr>
           <% END %>
         </table>

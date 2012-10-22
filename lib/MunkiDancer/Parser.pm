@@ -6,12 +6,13 @@ use Exporter 'import';
 our @EXPORT = qw(
     %catalog
     %host
+    %manifest
     ParseCatalog
     ParseHost
 );
 our %catalog;   # hash with catalog entries
 our %host;      # hash with host information
-my %manifest;   # hash with host manifest entries
+our %manifest;  # hash with host manifest entries
 
 sub ParseCatalog {
     my ($name) = @_;
@@ -89,7 +90,10 @@ sub FetchAppInfo {
 sub ParseHost {
     my ($name) = @_;
 
-    %manifest = ();  # empty hash
+    # initialize hashes
+    %host     = ();
+    %manifest = ();
+    $manifest{name} = $name;
 
     my $manifestfile = Manifest($name);
     Error404("Host not found") if ( !$manifestfile);
@@ -99,7 +103,7 @@ sub ParseHost {
     # loop over relevant entries
     foreach my $key qw( catalogs managed_installs included_manifests ) {
         foreach my $entry (@{ ${$plist->as_perl}{$key} }) {
-            push(@{ $manifest{$key} }, $entry);     # push to hash of arrays
+            push(@{ $manifest{$key} }, $entry); # push to hash of arrays
         }
     }
 
@@ -113,13 +117,9 @@ sub ParseHost {
         ParseCatalog($catalog);
     }
 
-    # store info in hash
-    %host = ();
-    $host{name}               = $name;
-    $host{catalogs}           = $manifest{catalogs};
-    $host{included_manifests} = $manifest{included_manifests};
+    # store info about installed packages in hash
     foreach my $app (@{ $manifest{managed_installs} }) {
-        $host{managed_installs}{$app} = $catalog{$app} if defined $catalog{$app};
+        $host{$app} = $catalog{$app} if defined $catalog{$app};
     }
 
     return 1;
@@ -135,7 +135,7 @@ sub ParseBundle {
 
     foreach my $key qw( managed_installs ) {
         foreach my $entry (@{ ${$plist->as_perl}{$key} }) {
-            push(@{ $manifest{$key} }, $entry);     # push to hash of arrays
+            push(@{ $manifest{$key} }, $entry); # push to hash of arrays
         }
     }
 

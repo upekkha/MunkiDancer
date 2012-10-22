@@ -40,7 +40,8 @@ get '/host/:name' => sub {
     ParseHost(param('name'));
 
     template 'host' => {
-        host => \%host,
+        host     => \%host,
+        manifest => \%manifest,
     };
 };
 
