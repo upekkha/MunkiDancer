@@ -22,13 +22,16 @@
           <% FOREACH element IN manifest.included_manifests %>
             <% element %>
           <% END %>
-        </br>
-        Managed Installs:
-        </br>
+        </br></br>
         <table id="sortedTable" class="tablesorter">
             <thead>
                 <tr>
-                    <th>id</th><th>name</th><th>description</th><th>license</th><th>version</th>
+                    <th>id</th>
+                    <th>name</th>
+                    <th>description</th>
+                    <th>license</th>
+                    <th>version</th>
+                    <th>install_type</th>
                 </tr>
             </thead>
           <% FOREACH app IN host.keys.sort %>
@@ -38,6 +41,7 @@
                 <td><% host.$app.description %></td>
                 <td><% host.$app.license %></td>
                 <td class="center"><% host.$app.version %></td>
+                <td><% host.$app.install_type %></td>
             </tr>
           <% END %>
         </table>

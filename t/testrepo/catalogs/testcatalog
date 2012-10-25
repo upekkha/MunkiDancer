@@ -196,5 +196,16 @@
 		<key>version</key>
 		<string>0.12</string>
 	</dict>
+    <!--Optional application-->
+    <dict>
+		<key>description</key>
+		<string>Belongs to optional_installs</string>
+		<key>display_name</key>
+		<string>Optional App</string>
+		<key>name</key>
+		<string>OptionalApp</string>
+		<key>version</key>
+		<string>1.0</string>
+	</dict>
 </array>
 </plist>

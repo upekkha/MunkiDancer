@@ -15,5 +15,9 @@
         <string>SecondTestApp</string>
         <string>ExcludedApp</string>
     </array>
+    <key>optional_installs</key>
+    <array>
+        <string>OptionalApp</string>
+    </array>
 </dict>
 </plist>
