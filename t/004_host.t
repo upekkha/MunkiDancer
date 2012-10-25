@@ -22,6 +22,7 @@ $url = '/host/testhost';
     response_content_like    [GET => $url],     qr|<td>free</td>|,                                              "$url: License free is listed";
     response_content_like    [GET => $url],     qr|<td>managed_installs</td>|,                                  "$url: Managed installs are listed";
     response_content_like    [GET => $url],     qr|<td>optional_installs</td>|,                                 "$url: Optional installs are listed";
+    response_content_like    [GET => $url],     qr|<td>ManagedOptionalApp</td>((?!</tr>).)*managed_installs|s,  "$url: Managed overrides optional";
 
 # route to poll if host exists
 $url = '/host/testhost/exists';

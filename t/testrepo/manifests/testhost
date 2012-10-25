@@ -14,10 +14,12 @@
     <array>
         <string>SecondTestApp</string>
         <string>ExcludedApp</string>
+        <string>ManagedOptionalApp</string>
     </array>
     <key>optional_installs</key>
     <array>
         <string>OptionalApp</string>
+        <string>ManagedOptionalApp</string>
     </array>
 </dict>
 </plist>

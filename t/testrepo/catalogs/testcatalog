@@ -207,5 +207,16 @@
 		<key>version</key>
 		<string>1.0</string>
 	</dict>
+    <!--Managed + Optional application-->
+    <dict>
+		<key>description</key>
+		<string>Belongs to managed and optional installs</string>
+		<key>display_name</key>
+		<string>ManagedOptional App</string>
+		<key>name</key>
+		<string>ManagedOptionalApp</string>
+		<key>version</key>
+		<string>1.0</string>
+	</dict>
 </array>
 </plist>

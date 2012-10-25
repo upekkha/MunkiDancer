@@ -2,3 +2,4 @@
 TestApp*http://TestApp.example.com*free
 SecondTestApp*http://SecondTestApp.example.com*ides
 OptionalApp*http://OptionalApp.example.com*free
+ManagedOptionalApp*http://ManagedOptionalApp.example.com*free
