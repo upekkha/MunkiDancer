@@ -23,10 +23,10 @@ $url = '/catalog/testcatalog';
     response_content_like    [GET => $url],     qr|<td>Last description is shown</td>|,                         "$url: Multiple entries: last description is shown";
     response_content_unlike  [GET => $url],     qr|<td>First description is ignored</td>|,                      "$url: Multiple entries: first description is ignored";
     response_content_unlike  [GET => $url],     qr|<td>Middle description is ignored</td>|,                     "$url: Multiple entries: middle description is ignored";
-    response_content_like    [GET => $url],     qr|>0\.13</td>|,                                                "$url: Multiple entries: highest version";
+    response_content_like    [GET => $url],     qr|>MultipleEntryApp((?!</tr>).)*>0\.13</td>|s,                 "$url: Multiple entries: highest version";
     response_content_unlike  [GET => $url],     qr|>1\.0\.5</td>|,                                              "$url: Update with lower version is ignored";
-    response_content_like    [GET => $url],     qr|>1\.1\.0</td>|,                                              "$url: Update increments version (above)";
-    response_content_like    [GET => $url],     qr|>2\.1\.0</td>|,                                              "$url: Update increments version (below)";
+    response_content_like    [GET => $url],     qr|>TestApp((?!</tr>).)*>1\.1\.0</td>|s,                        "$url: Update increments version (above)";
+    response_content_like    [GET => $url],     qr|>SecondTestApp((?!</tr>).)*>2\.1\.0</td>|s,                  "$url: Update increments version (below)";
 
 # route to poll if catalog exists
 $url = '/catalog/testcatalog/exists';
