@@ -1,4 +1,4 @@
-port:               5678
+port:               5577
 log:                'warning'
 daemon:             1
 behind_proxy:       0
