@@ -4,7 +4,17 @@ use MunkiDancer::Common;
 use MunkiDancer::Parser;
 
 get '/' => sub {
-    "MunkiDancer";
+    ParseCatalog('testing');
+    my %sortedcatalog;
+    foreach my $id ( keys %catalog ) {
+        foreach my $key ( keys %{ $catalog{$id} } ) {
+            $sortedcatalog{$catalog{$id}{name}}{$key} = $catalog{$id}->{$key};
+        }
+    }
+
+    template 'munki' => {
+        catalog => \%sortedcatalog,
+    };
 };
 
 get '/lib/:file' => sub {
