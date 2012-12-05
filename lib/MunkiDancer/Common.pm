@@ -50,7 +50,7 @@ sub AppInfo {
 sub AppExcluded {
     my ($app) = @_;
 
-    my $excluded_names = 'LicISG|Dphys|unlicensed|ISGmacports|ManagedClient';
+    my $excluded_names = 'LicISG|Dphys|unlicensed|ISGmacports|ManagedClient|Munki';
 
     if( exists $app->{name} ) {
         return 1 if $app->{name} =~ m/$excluded_names/i;
