@@ -9,6 +9,7 @@ use Dancer::Test;
 my @defined_routes = (
     '/',
     '/catalog/testcatalog',
+    '/catalog/testcatalog/table',
     '/catalog/testcatalog/raw',
     '/catalog/testcatalog/exists',
     '/catalog/testnotthere/exists',
@@ -25,6 +26,7 @@ foreach my $url (@defined_routes) {
 
 my @defined_error_routes = (
     '/catalog/testnotthere',
+    '/catalog/testnotthere/table',
     '/catalog/testnotthere/raw',
     '/host/testnotthere',
     '/host/testnotthere/raw',

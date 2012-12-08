@@ -4,17 +4,7 @@ use MunkiDancer::Common;
 use MunkiDancer::Parser;
 
 get '/' => sub {
-    ParseCatalog('testing');
-    my %sortedcatalog;
-    foreach my $id ( keys %catalog ) {
-        foreach my $key ( keys %{ $catalog{$id} } ) {
-            $sortedcatalog{$catalog{$id}{name}}{$key} = $catalog{$id}->{$key};
-        }
-    }
-
-    template 'munki' => {
-        catalog => \%sortedcatalog,
-    };
+    template 'munki';
 };
 
 get '/lib/:file' => sub {
@@ -38,6 +28,21 @@ get '/catalog/:name/exists' => sub {
     set serializer => 'JSON';
     return \%state;
 };
+
+get '/catalog/:name/table' => sub {
+    ParseCatalog(param('name'));
+    my %sortedcatalog;
+    foreach my $id ( keys %catalog ) {
+        foreach my $key ( keys %{ $catalog{$id} } ) {
+            $sortedcatalog{$catalog{$id}{name}}{$key} = $catalog{$id}->{$key};
+        }
+    }
+
+    template 'munki-table' => {
+        catalog => \%sortedcatalog,
+    };
+};
+
 
 get '/catalog/:name/raw' => sub {
     ParseCatalog(param('name'));

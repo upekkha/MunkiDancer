@@ -5,6 +5,20 @@
         <link rel="icon" type="image/png" href="img/munki_favicon.png" />
         <title>D-PHYS Munki Repo</title>
         <link rel="stylesheet" href="../lib/munki.css">
+        <script type="text/javascript" src="../lib/jquery-1.7.2.min.js"></script>
+        <script type="text/javascript">
+            $(window).load(function() {
+                $.ajax({
+                    url: '/catalog/testing/table',
+                    success: function(table) {
+                        $('#dynamic_content').html(table);
+                    },
+                    error: function() {
+                        $('.loading').html('An error occured while loading the page.');
+                    }
+                });
+            });
+        </script>
     </head>
     <body>
         <!-- Header -->
@@ -15,30 +29,13 @@
             </a>
         </div>
 
-        <!-- Table -->
-        <table>
-            <thead>
-                <tr>
-                    <th class="app" colspan=2>Application</th>
-                    <th class="des">Description</th>
-                    <th class="ver">Version</th>
-                </tr>
-            </thead>
-          <%- FOREACH app IN catalog.keys.sort %>
-            <tr>
-                <td class="ico"> <a href="<% catalog.$app.producturl %>" target="_blank"><img src="img/<% catalog.$app.id %>.png" class="appicon" alt="icon"></a></td>
-                <td class="app"><% catalog.$app.name %></td>
-                <% FILTER collapse %>
-                <td class="des"><% catalog.$app.description %>
-                  <% IF catalog.$app.license == 'ides' %>
-                    &ndash; <a href="http://ides.ethz.ch" target="_blank"><img src="img/ides.gif" class="idesicon" alt=ides></a>
-                  <% END %>
-                </td>
-                <% END %>
-                <td class="ver"><% catalog.$app.version %></td>
-            </tr>
-          <%- END %>
-        </table>
+        <!-- Body -->
+        <div id="dynamic_content">
+            <div class="loading">
+                <img src="lib/spinner.gif" width=25 alt="Loading animation">
+                Gathering application list...
+            </div>
+        </div>
 
         <!-- Footer -->
         <div class="footer">

@@ -16,6 +16,9 @@ body {
 .loading {
     margin-left         : 55px;
 }
+.loading img {
+    vertical-align      : middle;
+}
 .update {
     color               : red;
 }
