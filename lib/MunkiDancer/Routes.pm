@@ -7,11 +7,6 @@ get '/' => sub {
     template 'munki';
 };
 
-get '/lib/:file' => sub {
-    # send files in public/lib
-    send_file param('file');
-};
-
 get '/catalog/:name' => sub {
     ParseCatalog(param('name'));
 

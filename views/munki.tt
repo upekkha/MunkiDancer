@@ -2,10 +2,10 @@
 <html>
     <head>
         <meta charset="utf-8"/>
-        <link rel="icon" type="image/png" href="img/munki_favicon.png" />
         <title>D-PHYS Munki Repo</title>
-        <link rel="stylesheet" href="../lib/munki.css">
-        <script type="text/javascript" src="../lib/jquery-1.7.2.min.js"></script>
+        <link rel="icon" type="image/png" href="img/munki_favicon.png" />
+        <link rel="stylesheet" href="/styles/munki.css">
+        <script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script>
         <script type="text/javascript">
             $(window).load(function() {
                 $.ajax({
@@ -25,14 +25,14 @@
         <div class="title">D-PHYS Munki Repository</div>
         <div class="center">
             <a href="http://wiki.phys.ethz.ch/readme/munki" target="_blank">
-                <img src="img/munki_logo1.png" width=280 class="logo" alt="Munki Logo">
+                <img src="/img/munki_logo.png" width=280 class="logo" alt="Munki Logo">
             </a>
         </div>
 
         <!-- Body -->
         <div id="dynamic_content">
             <div class="loading">
-                <img src="lib/spinner.gif" width=25 alt="Loading animation">
+                <img src="/img/spinner.gif" width=25 alt="Loading animation">
                 Gathering application list...
             </div>
         </div>

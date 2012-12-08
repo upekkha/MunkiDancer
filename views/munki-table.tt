@@ -9,12 +9,12 @@
 
           <%- FOREACH app IN catalog.keys.sort %>
             <tr>
-                <td class="ico"> <a href="<% catalog.$app.producturl %>" target="_blank"><img src="img/<% catalog.$app.id %>.png" class="appicon" alt="icon"></a></td>
+                <td class="ico"> <a href="<% catalog.$app.producturl %>" target="_blank"><img src="icons/<% catalog.$app.id %>.png" class="appicon" alt="icon"></a></td>
                 <td class="app"><% catalog.$app.name %></td>
                 <% FILTER collapse %>
                 <td class="des"><% catalog.$app.description %>
                   <% IF catalog.$app.license == 'ides' %>
-                    &ndash; <a href="http://ides.ethz.ch" target="_blank"><img src="img/ides.gif" class="idesicon" alt=ides></a>
+                    &ndash; <a href="http://ides.ethz.ch" target="_blank"><img src="icons/ides.gif" class="idesicon" alt=ides></a>
                   <% END %>
                 </td>
                 <% END %>

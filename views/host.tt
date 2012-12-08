@@ -2,9 +2,9 @@
 <html>
     <head>
         <title>D-Phys Automated Software Installation</title>
-        <link rel="stylesheet" href="../lib/style.css">
-        <script type="text/javascript" src="../lib/jquery-1.7.2.min.js"></script>
-        <script type="text/javascript" src="../lib/jquery.tablesorter.min.js"></script>
+        <link rel="stylesheet" href="/styles/simple.css">
+        <script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script>
+        <script type="text/javascript" src="/js/jquery.tablesorter.min.js"></script>
         <script type="text/javascript">
             $(document).ready(function() {
                 $("#sortedTable").tablesorter();

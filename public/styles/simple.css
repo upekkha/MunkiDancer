@@ -16,16 +16,16 @@ th {
     background-color    : #CCCCCC;
 }
 table.tablesorter thead tr .tablesorter-header {
-    background-image    : url(../lib/bg.gif);
+    background-image    : url(/img/tablesorter-bg.gif);
     background-repeat   : no-repeat;
     background-position : center right;
     cursor              : pointer;
 }
 table.tablesorter thead tr .tablesorter-headerSortUp {
-    background-image    : url(../lib/asc.gif);
+    background-image    : url(/img/tablesorter-asc.gif);
     background-color    : #8dbdd8;
 }
 table.tablesorter thead tr .tablesorter-headerSortDown {
-    background-image    : url(../lib/desc.gif);
+    background-image    : url(/img/tablesorter-desc.gif);
     background-color    : #8dbdd8;
 }
