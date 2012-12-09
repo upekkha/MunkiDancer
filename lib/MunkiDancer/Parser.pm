@@ -137,7 +137,12 @@ sub ParseBundle {
     my $plist = parse_plist_file($bundlefile)
         or Error404("Bundle $name could not be parsed");
 
-    foreach my $key qw( optional_installs managed_installs ) {
+    # recursively parse included manifests
+    foreach my $bundle (@{ ${$plist->as_perl}{included_manifests} }) {
+        ParseBundle($bundle);
+    }
+
+    foreach my $key qw( included_manifests optional_installs managed_installs ) {
         foreach my $entry (@{ ${$plist->as_perl}{$key} }) {
             push(@{ $manifest{$key} }, $entry); # push to hash of arrays
         }

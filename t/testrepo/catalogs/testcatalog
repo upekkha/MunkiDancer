@@ -218,5 +218,16 @@
 		<key>version</key>
 		<string>1.0</string>
 	</dict>
+    <!--App in testinclude bundle-->
+    <dict>
+		<key>description</key>
+		<string>App listed in deeply included manifest</string>
+		<key>display_name</key>
+		<string>Included Optional App</string>
+		<key>name</key>
+		<string>IncludedOptionalApp</string>
+		<key>version</key>
+		<string>1.0</string>
+	</dict>
 </array>
 </plist>

@@ -6,6 +6,10 @@
 	<array>
 		<string>testcatalog</string>
 	</array>
+	<key>included_manifests</key>
+	<array>
+        <string>bundles/testinclude</string>
+	</array>
 	<key>managed_installs</key>
 	<array>
 		<string>TestApp</string>
