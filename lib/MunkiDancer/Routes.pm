@@ -2,6 +2,7 @@ package MunkiDancer::Routes;
 use Dancer ':syntax';
 use MunkiDancer::Common;
 use MunkiDancer::Parser;
+use MunkiDancer::LookForUpdates;
 
 get '/' => sub {
     template 'munki' => {
@@ -50,6 +51,7 @@ get '/catalog/:name/table' => sub {
 
 get '/catalog/:name/updates-table' => sub {
     ParseCatalog(param('name'));
+    LookForUpdates();
     my %sortedcatalog;
     foreach my $id ( keys %catalog ) {
         foreach my $key ( keys %{ $catalog{$id} } ) {
