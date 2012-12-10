@@ -8,8 +8,10 @@ use Dancer::Test;
 
 my @defined_routes = (
     '/',
+    '/updates',
     '/catalog/testcatalog',
     '/catalog/testcatalog/table',
+    '/catalog/testcatalog/updates-table',
     '/catalog/testcatalog/raw',
     '/catalog/testcatalog/exists',
     '/catalog/testnotthere/exists',

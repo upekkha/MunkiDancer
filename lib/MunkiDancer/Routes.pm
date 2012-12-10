@@ -10,6 +10,13 @@ get '/' => sub {
     };
 };
 
+get '/updates' => sub {
+    template 'munki' => {
+        ajaxurl    => "'/catalog/testing/updates-table'",
+        loadingmsg => "Gathering application list and checking for updates. This may take a minute...",
+    };
+};
+
 get '/catalog/:name' => sub {
     ParseCatalog(param('name'));
 
@@ -41,6 +48,19 @@ get '/catalog/:name/table' => sub {
     };
 };
 
+get '/catalog/:name/updates-table' => sub {
+    ParseCatalog(param('name'));
+    my %sortedcatalog;
+    foreach my $id ( keys %catalog ) {
+        foreach my $key ( keys %{ $catalog{$id} } ) {
+            $sortedcatalog{$catalog{$id}{name}}{$key} = $catalog{$id}->{$key};
+        }
+    }
+
+    template 'munki-table' => {
+        catalog => \%sortedcatalog,
+    };
+};
 
 get '/catalog/:name/raw' => sub {
     ParseCatalog(param('name'));
