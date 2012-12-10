@@ -4,7 +4,9 @@ use MunkiDancer::Common;
 use MunkiDancer::Parser;
 
 get '/' => sub {
-    template 'munki';
+    template 'munki' => {
+        ajaxurl => "'/catalog/testing/table'",
+    };
 };
 
 get '/catalog/:name' => sub {
