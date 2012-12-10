@@ -33,7 +33,7 @@
         <div id="dynamic_content">
             <div class="loading">
                 <img src="/img/spinner.gif" width=25 alt="Loading animation">
-                Gathering application list...
+                <% loadingmsg %>
             </div>
         </div>
 

@@ -5,7 +5,8 @@ use MunkiDancer::Parser;
 
 get '/' => sub {
     template 'munki' => {
-        ajaxurl => "'/catalog/testing/table'",
+        ajaxurl    => "'/catalog/testing/table'",
+        loadingmsg => "Gathering application list...",
     };
 };
 
