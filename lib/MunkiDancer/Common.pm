@@ -8,6 +8,7 @@ our @EXPORT = qw(
     AppExcluded
     UpdateExcluded
     UpdateShownInCatalog
+    LookForUpdateExcluded
     DefaultProductUrl
     Error404
 );
@@ -75,6 +76,14 @@ sub UpdateShownInCatalog {
     if( exists $app->{name} ) {
         return 1 if $app->{name} =~ m/MSRemoteDesktop/i;
     }
+}
+
+sub LookForUpdateExcluded {
+    my ($app_id) = @_;
+
+    my $excluded_ids = 'iWork|iLife|RemoteDesktopAdmin|Java|Xcode';
+
+    return 1 if $app_id =~ m/$excluded_ids/i;
 }
 
 sub DefaultProductUrl {

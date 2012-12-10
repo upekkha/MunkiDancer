@@ -55,6 +55,7 @@ get '/catalog/:name/updates-table' => sub {
     my %sortedcatalog;
     foreach my $id ( keys %catalog ) {
         foreach my $key ( keys %{ $catalog{$id} } ) {
+            next unless $catalog{$id}->{latest_version};
             $sortedcatalog{$catalog{$id}{name}}{$key} = $catalog{$id}->{$key};
         }
     }

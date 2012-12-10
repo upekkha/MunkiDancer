@@ -18,7 +18,14 @@
                   <% END %>
                 </td>
                 <% END %>
-                <td class="ver"><% catalog.$app.version %></td>
+                <% FILTER collapse %>
+                <td class="ver">
+                    <% catalog.$app.version %>
+                  <% IF catalog.$app.latest_version %>
+                    <div class="update"><% catalog.$app.latest_version %></div>
+                  <% END %>
+                </td>
+                <% END %>
             </tr>
           <%- END %>
         </table>
