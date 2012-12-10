@@ -8,6 +8,7 @@ our @EXPORT = qw(
     AppExcluded
     UpdateExcluded
     UpdateShownInCatalog
+    DefaultProductUrl
     Error404
 );
 
@@ -74,6 +75,15 @@ sub UpdateShownInCatalog {
     if( exists $app->{name} ) {
         return 1 if $app->{name} =~ m/MSRemoteDesktop/i;
     }
+}
+
+sub DefaultProductUrl {
+    my ($app_name) = @_;
+
+    (my $escaped_name = $app_name) =~ s/ /\%20/g;
+    my $url = "http://www.google.com/search?q=Mac%20OS%20$escaped_name";
+
+    return $url;
 }
 
 sub Error404 {

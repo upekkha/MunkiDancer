@@ -36,11 +36,15 @@ sub ParseCatalog {
             next if( $upd_vers <= $ori_vers );
         }
 
-        $catalog{$app->{name}} = {
-            "id"          => $app->{name},
-            "name"        => $app->{display_name} || $app->{name},
+        my $id   = $app->{name};
+        my $name = $app->{display_name} || $id;
+
+        $catalog{$id} = {
+            "id"          => $id,
+            "name"        => $name,
             "description" => $app->{description},
             "version"     => $app->{version},
+            "producturl"  => DefaultProductUrl($name),
         };
     }
 
@@ -79,7 +83,7 @@ sub FetchAppInfo {
         next if $line=~ m/^#/;                          # skip comments starting with #
         my ($id, $url, $lic) = split ('\*', "$line");   # retrieve app id, url and license separated by *
         if (exists $catalog{$id}) {                     # add info if entry for this app exists
-            $catalog{$id}{producturl} = $url || '';
+            $catalog{$id}{producturl} = $url if $url ne '';
             $catalog{$id}{license}    = $lic || 'free';
         }
     }
