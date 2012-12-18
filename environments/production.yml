@@ -1,5 +1,5 @@
 port:               5577
 log:                'warning'
 daemon:             1
-behind_proxy:       1
+behind_proxy:       0
 auto_reload:        0
