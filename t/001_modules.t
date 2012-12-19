@@ -14,6 +14,8 @@ use_ok 'Module::Refresh';
 use_ok 'Mac::PropertyList';
 # required to output json
 use_ok 'JSON';
+# required to download webpages
+use_ok 'WWW::Mechanize';
 # application's modules
 use_ok 'MunkiDancer::Common';
 use_ok 'MunkiDancer::Routes';

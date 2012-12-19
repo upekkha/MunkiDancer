@@ -2,6 +2,7 @@ package MunkiDancer::LookForUpdates;
 use Dancer ':syntax';
 use MunkiDancer::Common;
 use MunkiDancer::Parser;
+use WWW::Mechanize;
 use Exporter 'import';
 our @EXPORT = qw(
     LookForUpdates
@@ -24,7 +25,9 @@ sub LatestVersion {
     return 'N/A' if LookForUpdateExcluded($id);
     return 'N/A' unless $catalog{$id}{producturl} =~ m/macupdate/i;
 
-    my $html = `curl --silent $catalog{$id}{producturl}` || '';
+    my $mech = WWW::Mechanize->new();
+    $mech->get($catalog{$id}{producturl}, 'Accept-Encoding' => 'identity');
+    my $html = $mech->content || '';
     (my $version) = $html =~ m/<span id="appversinfo">(.*)<\/span>/i;
 
     return 'N/A' unless $version;
