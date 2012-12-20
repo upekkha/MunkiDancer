@@ -2,6 +2,7 @@ package MunkiDancer::Parser;
 use Dancer ':syntax';
 use MunkiDancer::Common;
 use Mac::PropertyList qw( parse_plist_file );
+use YAML::Tiny;
 use Exporter 'import';
 our @EXPORT = qw(
     %catalog
@@ -76,15 +77,16 @@ sub FetchAppInfo {
     my $infofile = AppInfo($name);
     Error404("AppInfo file not found") if ( !$infofile);
 
-    open(INFO, '<', $infofile)
-        or Error404("AppInfo file could not be opened");
-    foreach my $line (<INFO>) {
-        chomp($line);
-        next if $line=~ m/^#/;                          # skip comments starting with #
-        my ($id, $url, $lic) = split ('\*', "$line");   # retrieve app id, url and license separated by *
-        if (exists $catalog{$id}) {                     # add info if entry for this app exists
-            $catalog{$id}{producturl} = $url if $url ne '';
-            $catalog{$id}{license}    = $lic || 'free';
+    my $yaml = YAML::Tiny->read($infofile)
+        or Error404("AppInfo file could not be parsed");
+
+    my %appinfo = %{$yaml->[0]};
+    foreach my $id (keys %appinfo) {
+        if (exists $catalog{$id}) {
+            $catalog{$id}{license}    = $appinfo{$id}{license} || 'free';
+            if (exists $appinfo{$id}{update_url} and $appinfo{$id}{update_url} ne '') {
+                $catalog{$id}{producturl} = $appinfo{$id}{update_url};
+            }
         }
     }
 

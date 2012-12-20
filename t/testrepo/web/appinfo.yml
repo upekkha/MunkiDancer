@@ -1,0 +1,14 @@
+---
+TestApp:
+    update_url:         'http://TestApp.example.com'
+    license:            free
+
+SecondTestApp:
+    update_url:         'http://SecondTestApp.example.com'
+    license:            ides
+
+OptionalApp:
+    update_url:         'http://OptionalApp.example.com'
+
+ManagedOptionalApp:
+    update_url:         'http://ManagedOptionalApp.example.com'

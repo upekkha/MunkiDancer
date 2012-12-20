@@ -16,6 +16,8 @@ use_ok 'Mac::PropertyList';
 use_ok 'JSON';
 # required to download webpages
 use_ok 'WWW::Mechanize';
+# minimal yaml parser for appinfo
+require_ok 'YAML::Tiny';
 # application's modules
 use_ok 'MunkiDancer::Common';
 use_ok 'MunkiDancer::Routes';
