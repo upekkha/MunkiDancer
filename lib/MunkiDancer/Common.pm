@@ -81,7 +81,7 @@ sub UpdateShownInCatalog {
 sub LookForUpdateExcluded {
     my ($app_id) = @_;
 
-    my $excluded_ids = 'iWork|iLife|RemoteDesktopAdmin|Java|Xcode';
+    my $excluded_ids = 'iWork|iLife|RemoteDesktopAdmin|Xcode';
 
     return 1 if $app_id =~ m/$excluded_ids/i;
 }
