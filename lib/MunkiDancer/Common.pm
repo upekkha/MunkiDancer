@@ -17,7 +17,7 @@ sub RepoPath {
     my ($file) = @_;
 
     my $RepoPath = './repo';    # local symlink to repository
-    $RepoPath = './t/testrepo' if ($file =~ /test/ && $file ne 'testing');
+    $RepoPath = './t/testrepo' if ( $file =~ /test/ && $file ne 'testing' );
 
     return $RepoPath;
 }
@@ -54,10 +54,10 @@ sub AppExcluded {
 
     my $excluded_names = 'LicISG|Dphys|unlicensed|ISGmacports|ManagedClient|Munki';
 
-    if( exists $app->{name} ) {
+    if ( exists $app->{name} ) {
         return 1 if $app->{name} =~ m/$excluded_names/i;
     }
-    if( exists $app->{installer_item_location} ) {
+    if ( exists $app->{installer_item_location} ) {
         return 1 if $app->{installer_item_location} =~ m/Driver|Kostenstelle/;
     }
 }
@@ -65,7 +65,7 @@ sub AppExcluded {
 sub UpdateExcluded {
     my ($app, $upd_for) = @_;
 
-    if( exists $app->{name} ) {
+    if ( exists $app->{name} ) {
         return 1 if $app->{name} =~ m/MSRemoteDesktop|ExcludedUpdate/i;
     }
 }
@@ -73,7 +73,7 @@ sub UpdateExcluded {
 sub UpdateShownInCatalog {
     my ($app) = @_;
 
-    if( exists $app->{name} ) {
+    if ( exists $app->{name} ) {
         return 1 if $app->{name} =~ m/MSRemoteDesktop/i;
     }
 }
@@ -105,5 +105,5 @@ sub Error404 {
             code     => 404,
             title    => $title,
         )->render()
-    )->throw
+    )->throw;
 }
