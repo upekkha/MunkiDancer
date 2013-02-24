@@ -3,6 +3,19 @@
 
 A [Perl Dancer](http://www.perldancer.org) app that parses your [munki](http://code.google.com/p/munki) repository to generate an index of available packages. It can also fetch information about the latest version numbers from Macupdate and display a list of available updates for your applications.
 
+##### Routes:
+
+* `/`: repo index page with list of available packages
+* `/updates`: list of packages with available updates
+* `/catalog/<name>`: list of packages in a given catalog
+* `/host/<name>`: list of packages deployed on a given host
+
+Routes yielding JSON output as interface for other apps:
+
+* `/catalog/<name>/exists`: boolean flag to check existence of a catalog
+* `/catalog/<name>/raw`: list of packages in a given catalog
+* `/host/<name>/exists`: boolean flag to check existance of a host
+* `/host/<name>/raw`: list of packages deployed on a given host
 
 ##### Example:
 [munki.phys.ethz.ch](http://munki.phys.ethz.ch)
