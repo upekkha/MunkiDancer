@@ -1,25 +1,25 @@
   MunkiDancer
 ===============
 
-A [Perl Dancer](http://www.perldancer.org) app that parses your [munki](http://code.google.com/p/munki) repository to generate an index of available packages. It can also fetch information about the latest version numbers from Macupdate and display a list of available updates for your applications.
+A [Perl Dancer](http://www.perldancer.org) app that parses your [munki](http://code.google.com/p/munki) repository to generate an index of available packages. It can also fetch the latest version numbers from Macupdate and display the list of applications in your repo for which updates are available. Additionally you may view the list of packages contained in a given catalog, or being deployed on a certain client. The information can also be fetched in JSON format to be used as interface for another webservice.
 
-##### Example:
+##### Example
 [munki.phys.ethz.ch](http://munki.phys.ethz.ch)
 
-##### Routes:
+##### Routes
 * `/`: repo index page with list of available packages
 * `/updates`: list of packages with available updates
 * `/catalog/<name>`: list of packages in a given catalog
 * `/host/<name>`: list of packages deployed on a given host
 
-Routes yielding JSON output as interface for other apps:
+Routes yielding JSON output:
 
 * `/catalog/<name>/exists`: boolean flag to check existence of a catalog
 * `/catalog/<name>/raw`: list of packages in a given catalog
-* `/host/<name>/exists`: boolean flag to check existance of a host
+* `/host/<name>/exists`: boolean flag to check existence of a host
 * `/host/<name>/raw`: list of packages deployed on a given host
 
-##### Configuration:
+##### Configuration
 Create a symlink `repo` pointing to your munki repository. By default, a folder structure of the following form is expected:
 
     ./repo
@@ -37,9 +37,9 @@ The `appinfo.yml` file can contain further information about the applications, l
 ```yaml
 ---
 AppName:
-    homepage:           'http://AppName.example.com'
-    update_url:         'http://www.macupdate.com/app/mac/123456/AppName'
-    license:            free
+    homepage:       'http://AppName.example.com'
+    update_url:     'http://www.macupdate.com/app/mac/123456/AppName'
+    license:        'free'
 ```
 
 To change the appearance of the html pages, you can edit the layout templates in the `view` folder, as well as the corresponding stylesheets inside `public/styles`.
@@ -47,7 +47,7 @@ To change the appearance of the html pages, you can edit the layout templates in
 Any other customizations have to be made in the perl code. For instance one can modify the regular expressions in `lib/MunkiDancer/Common.pm` to define which applications are to be excluded from the index or updates pages.
 
 
-##### Dependencies:
+##### Dependencies
 The script makes use of several perl modules available on [cpan](http://www.cpan.org) or through [MacPorts](www.macports.org).
 
 ```
