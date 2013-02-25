@@ -1,4 +1,4 @@
-#!/opt/local/bin/perl
+#!/usr/bin/env perl
 use Dancer;
 use MunkiDancer::Routes;
 
