@@ -5,8 +5,8 @@
         <title>D-PHYS Munki Repo</title>
         <link rel="icon" type="image/png" href="img/munki_favicon.png" />
         <link rel="stylesheet" href="styles/munki.css">
-        <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
-        <script type="text/javascript">
+        <script src="js/jquery-1.7.2.min.js"></script>
+        <script>
             $(window).load(function() {
                 $.ajax({
                     url: <% ajaxurl %>,

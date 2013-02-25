@@ -3,9 +3,9 @@
     <head>
         <title>D-Phys Automated Software Installation</title>
         <link rel="stylesheet" href="styles/simple.css">
-        <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
-        <script type="text/javascript" src="js/jquery.tablesorter.min.js"></script>
-        <script type="text/javascript">
+        <script src="js/jquery-1.7.2.min.js"></script>
+        <script src="js/jquery.tablesorter.min.js"></script>
+        <script>
             $(document).ready(function() {
                 $("#sortedTable").tablesorter();
             });
