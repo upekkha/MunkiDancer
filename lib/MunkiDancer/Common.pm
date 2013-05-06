@@ -74,7 +74,7 @@ sub UpdateShownInCatalog {
     my ($app) = @_;
 
     if ( exists $app->{name} ) {
-        return 1 if $app->{name} =~ m/MSRemoteDesktop/i;
+        return 1 if $app->{name} =~ m/MSRemoteDesktop|BibDesk|Latexit|Texmaker|TeXShop/;
     }
 }
 
