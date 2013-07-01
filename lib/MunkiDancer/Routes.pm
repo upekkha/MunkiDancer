@@ -56,6 +56,9 @@ get '/catalog/:name/updates-table' => sub {
             next unless $catalog{$id}->{latest_version};
             $sortedcatalog{$catalog{$id}{name}}{$key} = $catalog{$id}->{$key};
         }
+        if ( exists $catalog{$id}->{update_url} and $catalog{$id}->{update_url} ne '' ) {
+            $sortedcatalog{$catalog{$id}{name}}{producturl} = $catalog{$id}->{update_url};
+        }
     }
 
     template 'munki-table' => {
