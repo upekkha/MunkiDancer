@@ -52,13 +52,11 @@ get '/catalog/:name/updates-table' => sub {
     LookForUpdates();
     my %sortedcatalog;
     foreach my $id ( keys %catalog ) {
+        next unless $catalog{$id}->{latest_version};
         foreach my $key ( keys %{$catalog{$id}} ) {
-            next unless $catalog{$id}->{latest_version};
             $sortedcatalog{$catalog{$id}{name}}{$key} = $catalog{$id}->{$key};
         }
-        if ( exists $catalog{$id}->{update_url} and $catalog{$id}->{update_url} ne '' ) {
-            $sortedcatalog{$catalog{$id}{name}}{producturl} = $catalog{$id}->{update_url};
-        }
+        $sortedcatalog{$catalog{$id}{name}}{producturl} = $catalog{$id}->{update_url};
     }
 
     template 'munki-table' => {

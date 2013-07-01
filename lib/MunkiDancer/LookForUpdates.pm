@@ -23,10 +23,11 @@ sub LatestVersion {
     my ($id) = @_;
 
     return 'N/A' if LookForUpdateExcluded($id);
-    return 'N/A' unless $catalog{$id}{producturl} =~ m/macupdate/i;
+    return 'N/A' unless exists $catalog{$id}{update_url};
+    return 'N/A' unless $catalog{$id}{update_url} =~ m/macupdate/i;
 
     my $mech = WWW::Mechanize->new();
-    $mech->get( $catalog{$id}{producturl}, 'Accept-Encoding' => 'identity' );
+    $mech->get( $catalog{$id}{update_url}, 'Accept-Encoding' => 'identity' );
     my $html = $mech->content || '';
     (my $version) = $html =~ m/<span id="appversinfo">(.*)<\/span>/i;
 

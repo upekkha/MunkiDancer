@@ -87,8 +87,8 @@ sub FetchAppInfo {
             if ( exists $appinfo{$id}{homepage} ) {
                 $catalog{$id}{producturl} = $appinfo{$id}{homepage};
             }
-            if ( exists $appinfo{$id}{update_url} and $appinfo{$id}{update_url} ne '' ) {
-                $catalog{$id}{producturl} ||= $appinfo{$id}{update_url};
+            if ( exists $appinfo{$id}{update_url} ) {
+                $catalog{$id}{update_url} = $appinfo{$id}{update_url};
             }
         }
     }
