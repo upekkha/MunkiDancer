@@ -84,8 +84,11 @@ sub FetchAppInfo {
     foreach my $id ( keys %appinfo ) {
         if ( exists $catalog{$id} ) {
             $catalog{$id}{license} = $appinfo{$id}{license} || 'free';
+            if ( exists $appinfo{$id}{homepage} ) {
+                $catalog{$id}{producturl} = $appinfo{$id}{homepage};
+            }
             if ( exists $appinfo{$id}{update_url} and $appinfo{$id}{update_url} ne '' ) {
-                $catalog{$id}{producturl} = $appinfo{$id}{update_url};
+                $catalog{$id}{producturl} ||= $appinfo{$id}{update_url};
             }
         }
     }
