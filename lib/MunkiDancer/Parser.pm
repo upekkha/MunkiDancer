@@ -10,6 +10,7 @@ our @EXPORT = qw(
     %manifest
     ParseCatalog
     ParseHost
+    HostsWithPackage
 );
 our %catalog;   # hash with catalog entries
 our %host;      # hash with host information
@@ -158,6 +159,16 @@ sub ParseBundle {
     }
 
     return 1;
+}
+
+sub HostsWithPackage {
+    my ($pkg) = @_;
+    return () unless $pkg =~ /^[a-zA-Z0-9\-_]+$/;
+
+    my @hosts = `cd ./repo/manifests; git grep -l '^[^\-]*>$pkg<'`;
+    chomp @hosts;
+
+    return @hosts;
 }
 
 1;
