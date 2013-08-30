@@ -94,4 +94,16 @@ get '/host/:name/json' => sub {
     return \%host;
 };
 
+get '/costunit/:number/json' => sub {
+    my $number = param('number');
+    my @hostnames = HostsWithPackage("Kostenstelle$number");
+    my @hosts = ();
+    foreach my $hostname (@hostnames) {
+        push (@hosts, { costunit => $number, hostname => $hostname } );
+    }
+    set serializer => 'JSON';
+
+    return \@hosts;
+};
+
 1;
