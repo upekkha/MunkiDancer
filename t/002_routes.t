@@ -12,13 +12,13 @@ my @defined_routes = (
     '/catalog/testcatalog',
     '/catalog/testcatalog/table',
     '/catalog/testcatalog/updates-table',
-    '/catalog/testcatalog/raw',
+    '/catalog/testcatalog/json',
     '/catalog/testcatalog/exists',
     '/catalog/testnotthere/exists',
     '/host/testhost',
     '/host/testhost/exists',
     '/host/testnotthere/exists',
-    '/host/testhost/raw',
+    '/host/testhost/json',
 );
 foreach my $url (@defined_routes) {
     route_exists        [GET => $url],                  "$url: route handler is defined";
@@ -28,9 +28,9 @@ foreach my $url (@defined_routes) {
 my @defined_error_routes = (
     '/catalog/testnotthere',
     '/catalog/testnotthere/table',
-    '/catalog/testnotthere/raw',
+    '/catalog/testnotthere/json',
     '/host/testnotthere',
-    '/host/testnotthere/raw',
+    '/host/testnotthere/json',
 );
 foreach my $url (@defined_error_routes) {
     route_exists        [GET => $url],                  "$url: route handler is defined";

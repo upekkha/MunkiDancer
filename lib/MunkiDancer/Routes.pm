@@ -64,7 +64,7 @@ get '/catalog/:name/updates-table' => sub {
     };
 };
 
-get '/catalog/:name/raw' => sub {
+get '/catalog/:name/json' => sub {
     ParseCatalog( param('name') );
     set serializer => 'JSON';
 
@@ -87,7 +87,7 @@ get '/host/:name/exists' => sub {
     return \%state;
 };
 
-get '/host/:name/raw' => sub {
+get '/host/:name/json' => sub {
     ParseHost( param('name') );
     set serializer => 'JSON';
 

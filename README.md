@@ -15,9 +15,9 @@ A [Perl Dancer](http://www.perldancer.org) app that parses your [munki](http://c
 Routes yielding JSON output:
 
 * `/catalog/<name>/exists`: boolean flag to check existence of a catalog
-* `/catalog/<name>/raw`: list of packages in a given catalog
+* `/catalog/<name>/json`: list of packages in a given catalog in JSON format
 * `/host/<name>/exists`: boolean flag to check existence of a host
-* `/host/<name>/raw`: list of packages deployed on a given host
+* `/host/<name>/json`: list of packages deployed on a given host in JSON format
 
 ##### Configuration
 Create a symlink `repo` pointing to your munki repository. By default, a folder structure of the following form is expected:

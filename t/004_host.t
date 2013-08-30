@@ -33,7 +33,7 @@ $url = '/host/testnotthere/exists';
     response_content_like    [GET => $url],     qr|"exists"\s*:\s*"0"|,                                         "$url: Exists = 0";
 
 # raw data should have json content-type
-foreach $url qw( /host/testhost/raw /host/testhost/exists /host/testnotthere/exists ) {
+foreach $url qw( /host/testhost/json /host/testhost/exists /host/testnotthere/exists ) {
     response_headers_include [GET => $url],     [ 'Content-Type' => 'application/json' ],                       "$url: Content-type is json";
 }
 
