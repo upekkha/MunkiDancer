@@ -1,5 +1,6 @@
 ---
 TestApp:
+    homepage:           'http://TestApp.example.com'
     update_url:         'http://TestApp.example.com'
     license:            free
 
