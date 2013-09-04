@@ -91,6 +91,9 @@ sub FetchAppInfo {
             if ( exists $appinfo{$id}{update_url} ) {
                 $catalog{$id}{update_url} = $appinfo{$id}{update_url};
             }
+            if ( exists $appinfo{$id}{idesprice} ) {
+                $catalog{$id}{idesprice} = $appinfo{$id}{idesprice};
+            }
         }
     }
 
