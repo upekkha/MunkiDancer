@@ -114,7 +114,7 @@ sub ParseHost {
         or Error404("Host could not be parsed");
 
     # loop over relevant entries
-    foreach my $key qw( catalogs included_manifests managed_installs optional_installs ) {
+    foreach my $key (qw( catalogs included_manifests managed_installs optional_installs )) {
         foreach my $entry ( @{${$plist->as_perl}{$key}} ) {
             push( @{$manifest{$key}}, $entry ); # push to hash of arrays
         }
@@ -131,7 +131,7 @@ sub ParseHost {
     }
 
     # store info about installed packages in hash
-    foreach my $type qw( optional_installs managed_installs ) {
+    foreach my $type (qw( optional_installs managed_installs )) {
         foreach my $app ( @{$manifest{$type}} ) {
             next unless defined $catalog{$app};
             $host{$app} = $catalog{$app};
@@ -155,7 +155,7 @@ sub ParseBundle {
         ParseBundle($bundle);
     }
 
-    foreach my $key qw( included_manifests optional_installs managed_installs ) {
+    foreach my $key (qw( included_manifests optional_installs managed_installs )) {
         foreach my $entry ( @{${$plist->as_perl}{$key}} ) {
             push( @{$manifest{$key}}, $entry );    # push to hash of arrays
         }
