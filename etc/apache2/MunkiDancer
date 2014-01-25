@@ -1,0 +1,27 @@
+<VirtualHost *:80>
+    ServerName munki.phys.ethz.ch
+    ServerAlias phd-munki.ethz.ch
+    DocumentRoot /opt/MunkiDancer
+
+    RedirectMatch (.*) https://phd-munki.ethz.ch$1
+
+    ErrorLog  /var/log/apache2/munki_error.log
+    CustomLog /var/log/apache2/munki_access.log common
+</VirtualHost>
+<VirtualHost *:443>
+    ServerName munki.phys.ethz.ch
+    ServerAlias phd-munki.ethz.ch
+    DocumentRoot /opt/MunkiDancer
+
+    HostnameLookups On
+    ProxyPass / http://localhost:8030/ retry=0
+    ProxyPassReverse / http://localhost:8030/
+
+    SSLEngine on
+    SSLCertificateFile /etc/apache2/cert/phd-munki.crt
+    SSLCertificateKeyFile /etc/apache2/cert/phd-munki.key
+
+    logLevel  warn
+    ErrorLog  /var/log/apache2/munki_ssl_error.log
+    CustomLog /var/log/apache2/munki_ssl_access.log common
+</VirtualHost>
