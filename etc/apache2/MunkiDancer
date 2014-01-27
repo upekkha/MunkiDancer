@@ -1,6 +1,7 @@
 <VirtualHost *:80>
     ServerName munki.phys.ethz.ch
     ServerAlias phd-munki.ethz.ch
+    ServerAdmin isg@phys.ethz.ch
     DocumentRoot /opt/MunkiDancer
 
     RedirectMatch (.*) https://phd-munki.ethz.ch$1
@@ -11,6 +12,7 @@
 <VirtualHost *:443>
     ServerName munki.phys.ethz.ch
     ServerAlias phd-munki.ethz.ch
+    ServerAdmin isg@phys.ethz.ch
     DocumentRoot /opt/MunkiDancer
 
     HostnameLookups On
