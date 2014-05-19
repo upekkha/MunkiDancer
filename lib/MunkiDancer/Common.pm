@@ -43,7 +43,7 @@ sub Manifest {
 sub AppInfo {
     my ($name) = @_;
 
-    my $file = RepoPath($name) . "/web/appinfo.yml";
+    my $file = RepoPath($name) . '/web/appinfo.yml';
     return 0 unless (-e $file);
 
     return $file;

@@ -6,15 +6,15 @@ use MunkiDancer::LookForUpdates;
 
 get '/' => sub {
     template 'munki' => {
-        ajaxurl    => "'catalog/testing/table'",
-        loadingmsg => "Gathering application list...",
+        ajaxurl    => 'catalog/testing/table',
+        loadingmsg => 'Gathering application list...',
     };
 };
 
 get '/updates' => sub {
     template 'munki' => {
-        ajaxurl    => "'catalog/testing/updates-table'",
-        loadingmsg => "Gathering application list and checking for updates. This may take a minute...",
+        ajaxurl    => 'catalog/testing/updates-table',
+        loadingmsg => 'Gathering application list and checking for updates. This may take a minute...',
     };
 };
 

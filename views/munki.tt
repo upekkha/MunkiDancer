@@ -9,7 +9,7 @@
         <script>
             $(window).load(function() {
                 $.ajax({
-                    url: <% ajaxurl %>,
+                    url: '<% ajaxurl %>',
                     success: function(table) {
                         $('#dynamic_content').html(table);
                     },
