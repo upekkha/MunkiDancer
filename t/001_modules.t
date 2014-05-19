@@ -7,9 +7,6 @@ use lib qw( lib/ );
 require_ok 'Dancer';
 use_ok 'Template';
 use_ok 'YAML';
-# required for auto_reload
-use_ok 'Clone';
-use_ok 'Module::Refresh';
 # required to parse plist files
 use_ok 'Mac::PropertyList';
 # required to output json
