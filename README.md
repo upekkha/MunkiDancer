@@ -52,5 +52,5 @@ Any other customizations have to be made in the perl code. For instance one can 
 The script makes use of several perl modules available on [cpan](http://www.cpan.org) or through [MacPorts](www.macports.org).
 
 ```
-sudo port install p5-dancer p5-yaml-tiny p5-www-mechanize
+sudo port install p5-dancer p5-json p5-template-toolkit p5-yaml-tiny p5-www-mechanize
 ```
