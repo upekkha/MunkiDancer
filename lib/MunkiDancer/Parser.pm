@@ -168,7 +168,8 @@ sub HostsWithPackage {
     my ($pkg) = @_;
     return () unless $pkg =~ /^[a-zA-Z0-9\-_]+$/;
 
-    my @hosts = `cd /opt/MunkiDancer/repo/manifests; git grep -l '^[^\-]*>$pkg<'`;
+    my $appdir = config->{appdir};
+    my @hosts = `cd $appdir/repo/manifests; git grep -l '^[^\-]*>$pkg<'`;
     chomp @hosts;
 
     return @hosts;
