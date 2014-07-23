@@ -29,7 +29,7 @@ sub LatestVersion {
     my $mech = WWW::Mechanize->new();
     $mech->get( $catalog{$id}{update_url}, 'Accept-Encoding' => 'identity' );
     my $html = $mech->content || '';
-    (my $version) = $html =~ m/<h4 id="app_info_version_2" [^>]*>\s*(.*?)\s*<\/h4>/i;
+    (my $version) = $html =~ m/id="app_info_version_2" [^>]*>\s*(.*?)\s*<\/h4>/i;
 
     return 'N/A' unless $version;
 
