@@ -11,6 +11,7 @@ our @EXPORT = qw(
     ParseCatalog
     ParseHost
     HostsWithPackage
+    HostsPerCostunit
 );
 our %catalog;   # hash with catalog entries
 our %host;      # hash with host information
@@ -173,6 +174,20 @@ sub HostsWithPackage {
     chomp @hosts;
 
     return @hosts;
+}
+sub HostsPerCostunit {
+    my %HostsPerCostunit;
+
+    my $appdir = config->{appdir};
+    foreach my $line (`cd $appdir/repo/manifests && git grep --no-color Kostenstelle`) {
+        if ( $line =~ m%([^/]*):\s*<string>Kostenstelle(\d{5})</string>% ) {
+            my $hostname = $1;
+            my $costunit = $2;
+            push( @{$HostsPerCostunit{$costunit}}, $hostname );
+        }
+    }
+
+    return %HostsPerCostunit;
 }
 
 1;

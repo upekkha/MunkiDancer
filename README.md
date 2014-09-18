@@ -18,6 +18,7 @@ Routes yielding JSON output:
 * `/catalog/<name>/json`: list of packages in a given catalog in JSON format
 * `/host/<name>/exists`: boolean flag to check existence of a host
 * `/host/<name>/json`: list of packages deployed on a given host in JSON format
+* `/costunits`: hash of all cost units and the corresponding list of hosts in JSON format
 * `/costunit/<number>/json`: list of hosts in a given cost unit in JSON format
 
 ##### Configuration
