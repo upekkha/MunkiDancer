@@ -175,6 +175,7 @@ sub HostsWithPackage {
 
     return @hosts;
 }
+
 sub HostsPerCostunit {
     my %HostsPerCostunit;
 

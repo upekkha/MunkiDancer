@@ -94,7 +94,7 @@ get '/host/:name/json' => sub {
     return \%host;
 };
 
-get '/costunits' => sub {
+get '/costunits/json' => sub {
     my %HostsPerCostunit = HostsPerCostunit();
     set serializer => 'JSON';
 
