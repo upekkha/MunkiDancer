@@ -26,13 +26,13 @@ Create a symlink `repo` pointing to your munki repository. By default, a folder 
 
     ./repo
     ├── catalogs/          # munki catalogs
+    ├── icons/             # munki application icons
     ├── manifests/         # munki host manifests
     │   └── bundles/       # munki bundles
     └── web/               # special folder for MunkiDancer
-        ├── img/           # folder with application icons
         └── appinfo.yml    # parsed application infos
 
-The `img` folder may contain png files with the same name as the packages to be used as icons on the index page.
+The `icons` folder should contain png files with the same name as the packages to be used as icons on the index page.
 
 The `appinfo.yml` file can contain further information about the applications, like the license type, the application's homepage and Macupdate page to look for the latest version number.
 
