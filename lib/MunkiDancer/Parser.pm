@@ -1,7 +1,7 @@
 package MunkiDancer::Parser;
 use Dancer ':syntax';
 use MunkiDancer::Common;
-use Mac::PropertyList qw( parse_plist_file );
+use Mac::PropertyList qw( parse_plist parse_plist_file );
 use YAML::Tiny;
 use Exporter 'import';
 our @EXPORT = qw(
@@ -9,6 +9,7 @@ our @EXPORT = qw(
     %host
     %manifest
     ParseCatalog
+    CleanCatalog
     ParseHost
     HostsWithPackage
     HostsPerCostunit
@@ -22,7 +23,8 @@ sub ParseCatalog {
 
     my $catalogfile = Catalog($name);
     Error404("Catalog not found") unless $catalogfile;
-    my $plist = parse_plist_file($catalogfile)
+
+    my $plist = parse_plist( CleanCatalog($catalogfile) )
         or Error404("Catalog could not be parsed");
 
     %catalog = ();  # empty hash
@@ -71,6 +73,45 @@ sub ParseCatalog {
     FetchAppInfo($name);
 
     return 1;
+}
+
+sub CleanCatalog {
+    my ($catalogfile) = @_;
+
+    # read lines of catalog file into array
+    open my $CATALOG, '<', $catalogfile
+        or die "Can't open file: $!";
+    chomp( my @lines = <$CATALOG> );
+    close $CATALOG or die "Couldn't close file: $!";
+
+    my @catalog_cleaned = ();
+
+    for my $i (0..$#lines) {
+        # Keep specific pkginfo tags
+        if ( $lines[$i] =~ /^\t\t<key>(description|name|display_name|version|installer_item_location)<\/key>/ ) {
+            push( @catalog_cleaned, $lines[$i], $lines[$i+1] );
+            next;
+        }
+
+        # Keep update_for tags
+        if ( $lines[$i] =~ /^\t\t<key>update_for<\/key>/ ) {
+            my $j = 0;
+            until( $lines[$i+$j] =~ /^\t\t<\/array>/ ) {
+                push( @catalog_cleaned, $lines[$i+$j] );
+                $j++;
+            }
+            push( @catalog_cleaned, $lines[$i+$j] );
+            next;
+        }
+
+        # Keep unindented tags, and first level dicts separating packages
+        if ( $lines[$i] =~ /^</ or $lines[$i] =~ /^\t<(\/)?dict/ ) {
+            push( @catalog_cleaned, $lines[$i] );
+            next;
+        }
+    }
+
+    return join( "\n", @catalog_cleaned );
 }
 
 sub FetchAppInfo {
