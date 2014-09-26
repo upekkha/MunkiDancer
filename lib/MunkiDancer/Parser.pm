@@ -14,15 +14,21 @@ our @EXPORT = qw(
     HostsWithPackage
     HostsPerCostunit
 );
-our %catalog;   # hash with catalog entries
-our %host;      # hash with host information
-our %manifest;  # hash with host manifest entries
+our %catalog;       # hash with catalog entries
+our %host;          # hash with host information
+our %manifest;      # hash with host manifest entries
+our %catalog_mtime; # hash with time of catalog's last modification
 
 sub ParseCatalog {
     my ($name) = @_;
 
     my $catalogfile = Catalog($name);
     Error404("Catalog not found") unless $catalogfile;
+
+    # skip parsing catalog if file has was not changed
+    my $mtime = (stat $catalogfile)[9];
+    return 1 if ( defined $catalog_mtime{$name} && $mtime == $catalog_mtime{$name} );
+    $catalog_mtime{$name} = $mtime;
 
     my $plist = parse_plist( CleanCatalog($catalogfile) )
         or Error404("Catalog could not be parsed");
