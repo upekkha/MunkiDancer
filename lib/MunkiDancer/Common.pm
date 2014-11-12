@@ -58,7 +58,7 @@ sub AppExcluded {
         return 1 if $app->{name} =~ m/$excluded_names/i;
     }
     if ( exists $app->{installer_item_location} ) {
-        return 1 if $app->{installer_item_location} =~ m/Driver|Kostenstelle|Dummy/;
+        return 1 if $app->{installer_item_location} =~ m/Driver|Kostenstelle|\/dev\/null/;
     }
 }
 
