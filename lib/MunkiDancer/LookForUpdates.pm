@@ -29,7 +29,17 @@ sub LatestVersion {
     my $mech = WWW::Mechanize->new();
     $mech->get( $catalog{$id}{update_url}, 'Accept-Encoding' => 'identity' );
     my $html = $mech->content || '';
-    (my $version) = $html =~ m/id="app_info_version_2" [^>]*>\s*(.*?)\s*<\/h4>/i;
+
+    my $match_version_number = qr{
+        id="app_info_version_2"     # id used for version numbers
+        [^>]* >                     # closing bracket of that tag
+        \s*                         # ignore spaces and newlines
+        (.*?)                       # extract version number
+        \s*                         # ignore spaces and newlines
+        <\/h4>                      # closing header tag
+    }xi;
+
+    (my $version) = $html =~ m/$match_version_number/;
 
     return 'N/A' unless $version;
 
