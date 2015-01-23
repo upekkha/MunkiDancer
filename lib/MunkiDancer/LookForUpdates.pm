@@ -34,7 +34,7 @@ sub LatestVersion {
         id="app_info_version_2"     # id used for version numbers
         [^>]* >                     # closing bracket of that tag
         \s*                         # ignore spaces and newlines
-        (.*?)                       # extract version number
+        <a\shref=[^>]* >(.*?)<\/a>  # extract version number from link
         \s*                         # ignore spaces and newlines
         <\/h4>                      # closing header tag
     }xi;
