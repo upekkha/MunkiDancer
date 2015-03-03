@@ -53,13 +53,13 @@ Any other customizations have to be made in the perl code. For instance one can 
 The script makes use of several perl modules available on [cpan](http://www.cpan.org) or through [MacPorts](www.macports.org).
 
 ```
-sudo port install p5-dancer p5-json p5-template-toolkit p5-yaml-tiny p5-www-mechanize
+sudo port install p5-dancer p5-json p5-template-toolkit p5-yaml-tiny p5-www-mechanize p5-sort-versions
 ```
 
 When deploying on a Linux server, the dependencies can be installed with your favorite package manager, for instance:
 
 ```
-aptitude install libdancer-perl libjson-perl libtemplate-perl libyaml-tiny-perl libwww-mechanize-perl
+aptitude install libdancer-perl libjson-perl libtemplate-perl libyaml-tiny-perl libwww-mechanize-perl libsort-versions-perl
 ```
 
 We use [starman](https://github.com/miyagawa/Starman) as multi-threaded perl webserver and apache as proxy. The `etc` folder contains examples of an init script and apache config.

@@ -2,6 +2,7 @@ package MunkiDancer::Parser;
 use Dancer ':syntax';
 use MunkiDancer::Common;
 use Mac::PropertyList qw( parse_plist parse_plist_file );
+use Sort::Versions;
 use YAML::Tiny;
 use Exporter 'import';
 our @EXPORT = qw(
@@ -42,9 +43,9 @@ sub ParseCatalog {
 
         # skip if an entry with higher version exists
         if ( exists $catalog{$app->{name}} ) {
-            (my $upd_vers = $app->{version})                 =~ s/\.//g;
-            (my $ori_vers = $catalog{$app->{name}}{version}) =~ s/\.//g;
-            next if ( $upd_vers <= $ori_vers );
+            my $upd_vers = $app->{version};
+            my $ori_vers = $catalog{$app->{name}}{version};
+            next if versioncmp( $upd_vers, $ori_vers ) == -1;    # upd_vers < ori_vers
         }
 
         my $id   = $app->{name};

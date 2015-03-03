@@ -15,6 +15,8 @@ use_ok 'JSON';
 use_ok 'WWW::Mechanize';
 # minimal yaml parser for appinfo
 require_ok 'YAML::Tiny';
+# required to compare software version numbers
+require_ok 'Sort::Versions';
 # application's modules
 use_ok 'MunkiDancer::Common';
 use_ok 'MunkiDancer::Routes';
