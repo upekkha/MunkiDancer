@@ -2,7 +2,7 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <array>
-    <!--Full entry-->
+	<!--Full entry-->
 	<dict>
 		<key>autoremove</key>
 		<false/>
@@ -59,8 +59,8 @@
 		<key>version</key>
 		<string>1.0.0</string>
 	</dict>
-    <!--Update for app above-->
-    <dict>
+	<!--Update for app above-->
+	<dict>
 		<key>display_name</key>
 		<string>SecondTestApp Update Above</string>
 		<key>name</key>
@@ -72,8 +72,8 @@
 			<string>TestApp</string>
 		</array>
 	</dict>
-    <!--Update for app above with lower version number-->
-    <dict>
+	<!--Update for app above with lower version number-->
+	<dict>
 		<key>display_name</key>
 		<string>SecondTestApp Update Above lower version</string>
 		<key>name</key>
@@ -85,8 +85,8 @@
 			<string>TestApp</string>
 		</array>
 	</dict>
-    <!--Update for app below-->
-    <dict>
+	<!--Update for app below-->
+	<dict>
 		<key>display_name</key>
 		<string>SecondTestApp Update Below</string>
 		<key>name</key>
@@ -98,8 +98,8 @@
 			<string>SecondTestApp</string>
 		</array>
 	</dict>
-    <!--Short entry with update-->
-    <dict>
+	<!--Short entry with update-->
+	<dict>
 		<key>description</key>
 		<string>Another test description</string>
 		<key>display_name</key>
@@ -109,8 +109,8 @@
 		<key>version</key>
 		<string>2.0.0</string>
 	</dict>
-    <!--Update without corresponding app-->
-    <dict>
+	<!--Update without corresponding app-->
+	<dict>
 		<key>display_name</key>
 		<string>Update without app</string>
 		<key>name</key>
@@ -122,8 +122,8 @@
 			<string>AppNotThere</string>
 		</array>
 	</dict>
-    <!--Excluded app-->
-    <dict>
+	<!--Excluded app-->
+	<dict>
 		<key>description</key>
 		<string>This app should not show up</string>
 		<key>display_name</key>
@@ -133,8 +133,8 @@
 		<key>version</key>
 		<string>0.1</string>
 	</dict>
-    <!--Excluded update-->
-    <dict>
+	<!--Excluded update-->
+	<dict>
 		<key>description</key>
 		<string>This update should not show up</string>
 		<key>display_name</key>
@@ -148,8 +148,8 @@
 			<string>SecondTestApp</string>
 		</array>
 	</dict>
-    <!--Excluded as update, but listed as app-->
-    <dict>
+	<!--Excluded as update, but listed as app-->
+	<dict>
 		<key>description</key>
 		<string>This is an app and update</string>
 		<key>display_name</key>
@@ -163,8 +163,8 @@
 			<string>SecondTestApp</string>
 		</array>
 	</dict>
-    <!--Multiple entries: first-->
-    <dict>
+	<!--Multiple entries: first-->
+	<dict>
 		<key>description</key>
 		<string>First description is ignored</string>
 		<key>display_name</key>
@@ -174,8 +174,8 @@
 		<key>version</key>
 		<string>0.11</string>
 	</dict>
-    <!--Multiple entries: highest version is kept-->
-    <dict>
+	<!--Multiple entries: highest version is kept-->
+	<dict>
 		<key>description</key>
 		<string>Last description is shown</string>
 		<key>display_name</key>
@@ -185,8 +185,8 @@
 		<key>version</key>
 		<string>0.13</string>
 	</dict>
-    <!--Multiple entries: middle is ignored-->
-    <dict>
+	<!--Multiple entries: middle is ignored-->
+	<dict>
 		<key>description</key>
 		<string>Middle description is ignored</string>
 		<key>display_name</key>
@@ -196,8 +196,8 @@
 		<key>version</key>
 		<string>0.12</string>
 	</dict>
-    <!--Optional application-->
-    <dict>
+	<!--Optional application-->
+	<dict>
 		<key>description</key>
 		<string>Belongs to optional_installs</string>
 		<key>display_name</key>
@@ -207,8 +207,8 @@
 		<key>version</key>
 		<string>1.0</string>
 	</dict>
-    <!--Managed + Optional application-->
-    <dict>
+	<!--Managed + Optional application-->
+	<dict>
 		<key>description</key>
 		<string>Belongs to managed and optional installs</string>
 		<key>display_name</key>
@@ -218,8 +218,8 @@
 		<key>version</key>
 		<string>1.0</string>
 	</dict>
-    <!--App in testinclude bundle-->
-    <dict>
+	<!--App in testinclude bundle-->
+	<dict>
 		<key>description</key>
 		<string>App listed in deeply included manifest</string>
 		<key>display_name</key>
