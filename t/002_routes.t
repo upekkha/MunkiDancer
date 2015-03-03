@@ -19,7 +19,7 @@ my @defined_routes = (
     '/host/testhost/exists',
     '/host/testnotthere/exists',
     '/host/testhost/json',
-    '/costunits',
+    '/costunits/json',
 );
 foreach my $url (@defined_routes) {
     route_exists        [GET => $url],                  "$url: route handler is defined";
