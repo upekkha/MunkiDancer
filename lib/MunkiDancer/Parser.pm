@@ -252,7 +252,7 @@ sub Licenses {
     ParseCatalog('testing');
     foreach my $app (keys %catalog) {
         if( defined ${catalog}{$app}{license} and ${catalog}{$app}{license} eq 'ides' ){
-            $Licenses{$app}{idesprice} = ${catalog}{$app}{idesprice} || '';
+            $Licenses{$app}{idesprice} = ${catalog}{$app}{idesprice} // '';
             my @hosts_with_app = HostsWithPackage($app);
             foreach my $host_with_costunit ( sort @HostsWithCostunit) {
                 if( grep { $_ eq $host_with_costunit } @hosts_with_app ) {
