@@ -20,6 +20,7 @@ Routes yielding JSON output:
 * `/host/<name>/json`: list of packages deployed on a given host in JSON format
 * `/costunits/json`: hash of all cost units and the corresponding list of hosts in JSON format
 * `/costunit/<number>/json`: list of hosts in a given cost unit in JSON format
+* `/licenses/json`: hash of licenced packages, costs, assigned hosts and total number of installations
 
 ##### Configuration
 Create a symlink `repo` pointing to your munki repository. By default, a folder structure of the following form is expected:
