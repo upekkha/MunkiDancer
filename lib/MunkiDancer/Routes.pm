@@ -101,6 +101,13 @@ get '/costunits/json' => sub {
     return \%HostsPerCostunit;
 };
 
+get '/licenses/json' => sub {
+    my %Licenses = Licenses();
+    set serializer => 'JSON';
+
+    return \%Licenses;
+};
+
 get '/costunit/:number/json' => sub {
     my $number = param('number');
     my @hostnames = HostsWithPackage("Kostenstelle$number");
