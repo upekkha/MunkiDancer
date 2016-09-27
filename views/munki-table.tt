@@ -14,7 +14,7 @@
                 <% FILTER collapse %>
                 <td class="des"><% catalog.$app.description %>
                   <% IF catalog.$app.license == 'ides' %>
-                    &ndash; <a href="http://ides.ethz.ch" target="_blank"><img src="icons/ides.gif" class="idesicon" alt=ides></a>
+                    &ndash; <a href="https://idesnx.ethz.ch" target="_blank"><img src="icons/ides.gif" class="idesicon" alt=ides></a>
                   <% END %>
                 </td>
                 <% END %>
