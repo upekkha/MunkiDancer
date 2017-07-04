@@ -34,9 +34,7 @@ sub LatestVersion {
         id="app_info_version_2"     # id used for version numbers
         [^>]* >                     # closing bracket of that tag
         \s*                         # ignore spaces and newlines
-        <a\shref=[^>]* >(.*?)<\/a>  # extract version number from link
-        \s*                         # ignore spaces and newlines
-        <\/h4>                      # closing header tag
+        <a[^>]*>\s*([^<]*)<\/a>     # extract version number from link
     }xi;
 
     (my $version) = $html =~ m/$match_version_number/;
