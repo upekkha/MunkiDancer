@@ -2,11 +2,15 @@ package MunkiDancer::LookForUpdates;
 use Dancer ':syntax';
 use MunkiDancer::Common;
 use MunkiDancer::Parser;
+use LWP::Protocol::http;
 use WWW::Mechanize;
 use Exporter 'import';
 our @EXPORT = qw(
     LookForUpdates
 );
+
+# Prevent "Header line too long (9557; limit is 8192)" error for $mech->get
+push(@LWP::Protocol::http::EXTRA_SOCK_OPTS, MaxLineLength => 0);
 
 sub LookForUpdates {
     foreach my $id ( keys %catalog ) {
