@@ -52,7 +52,7 @@ sub AppInfo {
 sub AppExcluded {
     my ($app) = @_;
 
-    my $excluded_names = 'LicISG|Dphys|unlicensed|ManagedClient|Munki|AdobeSharedApplications';
+    my $excluded_names = 'LicISG|Dphys|license|ManagedClient|Munki|AdobeSharedApplications|kostenstelle';
 
     if ( exists $app->{name} ) {
         return 1 if $app->{name} =~ m/$excluded_names/i;
