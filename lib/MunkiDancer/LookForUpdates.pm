@@ -35,10 +35,7 @@ sub LatestVersion {
     my $html = $mech->content || '';
 
     my $match_version_number = qr{
-        id="app_info_version_2"         # id used for version numbers
-        [^>]* >                         # closing bracket of that tag
-        \s*                             # ignore spaces and newlines
-        <a[^>]*>\s*([^<\s]*)\s*<\/a>    # extract version number from link
+        <span\sclass="mu_app_header_version">([^<]*)<\/span>
     }xi;
 
     (my $version) = $html =~ m/$match_version_number/;
