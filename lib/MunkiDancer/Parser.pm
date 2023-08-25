@@ -219,7 +219,7 @@ sub HostsWithPackage {
     return () unless $pkg =~ /^[a-zA-Z0-9\-_]+$/;
 
     my $appdir = config->{appdir};
-    my @hosts = `cd $appdir/repo/manifests; git grep -l '^[^\-]*>$pkg<'`;
+    my @hosts = `cd $appdir/repo/manifests; rgrep -l '^[^\-]*>$pkg<'`;
     chomp @hosts;
 
     return @hosts;
@@ -229,7 +229,7 @@ sub HostsPerCostunit {
     my %HostsPerCostunit;
 
     my $appdir = config->{appdir};
-    foreach my $line (`cd $appdir/repo/manifests && git grep --no-color Kostenstelle`) {
+    foreach my $line (`cd $appdir/repo/manifests && rgrep Kostenstelle`) {
         if ( $line =~ m%([^/]*):\s*<string>Kostenstelle(\d{5})</string>% ) {
             my $hostname = $1;
             my $costunit = $2;
